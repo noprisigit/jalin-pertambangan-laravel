@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\PostCategory;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class LandingController extends Controller
@@ -17,7 +18,9 @@ class LandingController extends Controller
             ->take(3)
             ->get();
 
-        return view('frontend.pages.home', compact('posts'));
+        $services = Service::query()->get();
+
+        return view('frontend.pages.home', compact('posts', 'services'));
     }
 
     public function about()

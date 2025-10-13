@@ -30,6 +30,8 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('posts/categories', \App\Http\Controllers\PostCategoryController::class, ['as' => 'posts']);
     Route::resource('posts', \App\Http\Controllers\PostController::class);
 
+    Route::resource('services', \App\Http\Controllers\ServiceController::class)->except(['create', 'edit', 'show']);
+
     Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'index'])->name('profile.index');
     Route::post('/profile', [\App\Http\Controllers\ProfileController::class, 'store'])->name('profile.store');
     Route::get('/change-password', [\App\Http\Controllers\ProfileController::class, 'changePassword'])->name('profile.change-password');

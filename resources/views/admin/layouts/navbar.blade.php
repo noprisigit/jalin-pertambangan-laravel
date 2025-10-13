@@ -36,6 +36,15 @@
             </div>
         </div>
     </li>
+    <li class="nav-item {{ Request::is('admin/services') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.services.index') }}">
+            <span
+                class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler.io/icons/icon/home -->
+                <i class="fas fa-wrench"></i>
+            </span>
+            <span class="nav-link-title"> {{ __('Manajemen Layanan') }} </span>
+        </a>
+    </li>
     <li class="nav-item {{ Request::is('admin/feedbacks') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('admin.feedbacks.index') }}">
             <span

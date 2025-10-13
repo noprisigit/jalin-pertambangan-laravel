@@ -137,7 +137,7 @@
 
             buttonSubmit.attr('disabled', true);
             buttonSubmit.addClass("disabled").html(`
-                <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
+                <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
                 {{ __('Loading...') }}
             `);
         }

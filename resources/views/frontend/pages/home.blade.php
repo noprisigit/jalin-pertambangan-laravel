@@ -2128,16 +2128,16 @@
 
     <!-- Hapus rs-slider yang lama -->
     <!--
-                                                                        <div id="rs-slider" class="rs-slider slider1">
-                                                                          <div class="bend niceties">
-                                                                            <div id="nivoSlider" class="slides">
-                                                                              <img src="assets/images/bahan/bahan1.jpg" alt="JP Hero" title="#slide-1" />
-                                                                              <img src="assets/images/bahan/bahan2.jpg" alt="JP Hero 2" title="#slide-2" />
-                                                                            </div>
-                                                                            ...
-                                                                                  </div>
-                                                                                  </div>
-                                                                        -->
+                                                                                    <div id="rs-slider" class="rs-slider slider1">
+                                                                                      <div class="bend niceties">
+                                                                                        <div id="nivoSlider" class="slides">
+                                                                                          <img src="assets/images/bahan/bahan1.jpg" alt="JP Hero" title="#slide-1" />
+                                                                                          <img src="assets/images/bahan/bahan2.jpg" alt="JP Hero 2" title="#slide-2" />
+                                                                                        </div>
+                                                                                        ...
+                                                                                              </div>
+                                                                                              </div>
+                                                                                    -->
 
     <!-- Services Mini Section Start -->
     <div class="rs-services style1 pt-100 pb-84 md-pt-80 md-pb-64">
@@ -2246,98 +2246,38 @@
     <!-- About Section End -->
 
     <!-- Services Section Start (dikontekskan JP) -->
-    <div id="rs-services" class="rs-services style1 modify pt-92 pb-84 md-pt-72 md-pb-64">
-        <div class="container">
-            <div class="sec-title text-center mb-47 md-mb-42">
-                <div class="sub-title primary">Layanan</div>
-                <h2 class="title mb-0">Layanan Utama JP</h2>
-            </div>
-            <div class="row gutter-16">
-                <div class="col-lg-3 col-sm-6 mb-16">
-                    <div class="service-wrap">
-                        <div class="icon-part"><img src="assets/images/services/icons/modify/1.png" alt=""></div>
-                        <div class="content-part">
-                            <h5 class="title"><a href="services-single.html">Diskusi & Clinic Session</a></h5>
-                            <div class="desc">Sesi tanya-jawab untuk memetakan masalah, opsi solusi, dan
-                                prioritas eksekusi.</div>
-                        </div>
-                    </div>
+    @if ($services->isNotEmpty())
+        <div id="rs-services" class="rs-services style1 modify pt-92 pb-84 md-pt-72 md-pb-64">
+            <div class="container">
+                <div class="sec-title text-center mb-47 md-mb-42">
+                    <div class="sub-title primary">Layanan</div>
+                    <h2 class="title mb-0">Layanan Utama JP</h2>
                 </div>
-                <div class="col-lg-3 col-sm-6 mb-16">
-                    <div class="service-wrap">
-                        <div class="icon-part"><img src="assets/images/services/icons/modify/2.png" alt=""></div>
-                        <div class="content-part">
-                            <h5 class="title"><a href="services-single.html">Edukasi & Coaching</a></h5>
-                            <div class="desc">Peningkatan kompetensi teknis & manajerial: K3L, perencanaan
-                                tambang, hingga keuangan.</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mb-16">
-                    <div class="service-wrap">
-                        <div class="icon-part"><img src="assets/images/services/icons/modify/3.png" alt=""></div>
-                        <div class="content-part">
-                            <h5 class="title"><a href="services-single.html">Pelatihan Terstruktur</a></h5>
-                            <div class="desc">Workshop terencana untuk perubahan perilaku, keterampilan, dan
-                                produktivitas.</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mb-16">
-                    <div class="service-wrap">
-                        <div class="icon-part"><img src="assets/images/services/icons/modify/4.png" alt=""></div>
-                        <div class="content-part">
-                            <h5 class="title"><a href="services-single.html">Asistensi Profesional</a></h5>
-                            <div class="desc">Dukungan hands-on untuk tugas profesional tim Anda—on-call maupun
-                                onsite.</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mb-16">
-                    <div class="service-wrap">
-                        <div class="icon-part"><img src="assets/images/services/icons/modify/5.png" alt=""></div>
-                        <div class="content-part">
-                            <h5 class="title"><a href="services-single.html">Pendampingan Transformasi</a></h5>
-                            <div class="desc">Membantu identifikasi kebutuhan, fokus, dan inisiatif pengambilan
-                                keputusan berkelanjutan.</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mb-16">
-                    <div class="service-wrap">
-                        <div class="icon-part"><img src="assets/images/services/icons/modify/6.png" alt=""></div>
-                        <div class="content-part">
-                            <h5 class="title"><a href="services-single.html">Audit & Tata Kelola</a></h5>
-                            <div class="desc">Penyelarasan SOP, PKB, dan regulasi untuk perlindungan & kepastian
-                                operasional.</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mb-16">
-                    <div class="service-wrap">
-                        <div class="icon-part"><img src="assets/images/services/icons/modify/7.png" alt=""></div>
-                        <div class="content-part">
-                            <h5 class="title"><a href="services-single.html">Perencanaan & Kontrol Produksi</a>
-                            </h5>
-                            <div class="desc">PPC pit-to-port, balancing resource, dan continuous improvement.
+                <div class="row gutter-16">
+                    @foreach ($services ?? [] as $service)
+                        <div class="col-lg-3 col-sm-6 mb-16">
+                            <div class="service-wrap">
+                                <div class="icon-part">
+                                    <img src="{{ $service->icon_url }}" alt="{{ $service->name }}">
+                                </div>
+                                <div class="content-part">
+                                    <h5 class="title">
+                                        <a href="javascript:void(0)">
+                                            {{ $service->name }}
+                                        </a>
+                                    </h5>
+                                    <div class="desc">
+                                        {{ $service->description }}
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mb-16">
-                    <div class="service-wrap">
-                        <div class="icon-part size-mod"><img src="assets/images/services/icons/modify/8.png"
-                                alt=""></div>
-                        <div class="content-part">
-                            <h5 class="title"><a href="services-single.html">Studi & Kajian Teknis</a></h5>
-                            <div class="desc">Eksplorasi, estimasi cadangan (CPI), hingga studi kelayakan &
-                                optimasi biaya.</div>
-                        </div>
-                    </div>
+                    @endforeach
+
                 </div>
             </div>
         </div>
-    </div>
+    @endif
     <!-- Services Section End -->
 
     <!-- Why Choose (Strategy) -->
