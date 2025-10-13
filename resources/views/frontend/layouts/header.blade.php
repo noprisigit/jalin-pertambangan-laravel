@@ -17,9 +17,9 @@
                             <nav class="rs-menu pr-0">
                                 <!-- NAVBAR disederhanakan untuk one-page -->
                                 <ul class="nav-menu">
-                                    <li><a class="jp-scroll" href="#home">Home</a></li>
-                                    <li><a class="jp-scroll" href="#news">News</a></li>
-                                    <li><a class="jp-scroll" href="#about_us">About Us</a></li>
+                                    <li><a class="jp-scroll" href="{{ route('landing.home') }}">Home</a></li>
+                                    <li><a class="jp-scroll" href="{{ route('landing.blogs') }}">News</a></li>
+                                    <li><a class="jp-scroll" href="{{ route('landing.about') }}">About Us</a></li>
                                     <li><a class="jp-scroll" href="#our-expert">Our Expert</a></li>
                                     <li class="menu-item-has-children">
                                         <a class="jp-scroll" href="#our-services">Our Services</a>

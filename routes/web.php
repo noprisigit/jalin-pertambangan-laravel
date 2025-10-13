@@ -6,6 +6,9 @@ Route::get('/login', [\App\Http\Controllers\Auth\LoginController::class, 'index'
 Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
 
 Route::get('/', [\App\Http\Controllers\LandingController::class, 'home'])->name('landing.home');
+Route::get('/about', [\App\Http\Controllers\LandingController::class, 'about'])->name('landing.about');
+Route::get('/services', [\App\Http\Controllers\LandingController::class, 'services'])->name('landing.services');
+Route::get('/blogs', [\App\Http\Controllers\LandingController::class, 'blogs'])->name('landing.blogs');
 
 Route::post('/feedbacks', [\App\Http\Controllers\FeedbackController::class, 'store'])->name('feedback.store');
 
