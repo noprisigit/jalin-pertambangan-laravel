@@ -1,6 +1,6 @@
 <ul class="navbar-nav pt-lg-3">
-    <li class="nav-item">
-        <a class="nav-link" href="./">
+    <li class="nav-item {{ Request::is('admin/dashboard*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.dashboard') }}">
             <span
                 class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler.io/icons/icon/home -->
                 <i class="fas fa-tachometer-alt"></i>
@@ -26,10 +26,12 @@
         <div class="dropdown-menu {{ Request::is('admin/posts*') ? 'show' : '' }}">
             <div class="dropdown-menu-columns">
                 <div class="dropdown-menu-column">
-                    <a class="dropdown-item {{ Request::is('admin/posts') ? 'active' : '' }}" href="{{ route('admin.posts.index') }}">
+                    <a class="dropdown-item {{ Request::is('admin/posts') ? 'active' : '' }}"
+                        href="{{ route('admin.posts.index') }}">
                         {{ __('Artikel') }}
                     </a>
-                    <a class="dropdown-item {{ Request::is('admin/posts/categories*') ? 'active' : '' }}" href="{{ route('admin.posts.categories.index') }}">
+                    <a class="dropdown-item {{ Request::is('admin/posts/categories*') ? 'active' : '' }}"
+                        href="{{ route('admin.posts.categories.index') }}">
                         {{ __('Kategori') }}
                     </a>
                 </div>
@@ -44,6 +46,30 @@
             </span>
             <span class="nav-link-title"> {{ __('Manajemen Layanan') }} </span>
         </a>
+    </li>
+    <li class="nav-item {{ Request::is('admin/products*') ? 'active' : '' }} dropdown">
+        <a class="nav-link dropdown-toggle" href="#navbar-product" data-bs-toggle="dropdown" data-bs-auto-close="false"
+            role="button" aria-expanded="{{ Request::is('admin/products*') ? 'true' : 'false' }}">
+            <span
+                class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler.io/icons/icon/layout-2 -->
+                <i class="fas fa-boxes"></i>
+            </span>
+            <span class="nav-link-title"> {{ __('Manajemen Produk') }} </span>
+        </a>
+        <div class="dropdown-menu {{ Request::is('admin/products*') ? 'show' : '' }}">
+            <div class="dropdown-menu-columns">
+                <div class="dropdown-menu-column">
+                    <a class="dropdown-item {{ Request::is('admin/products') ? 'active' : '' }}"
+                        href="{{ route('admin.products.index') }}">
+                        {{ __('Produk') }}
+                    </a>
+                    <a class="dropdown-item {{ Request::is('admin/products/categories*') ? 'active' : '' }}"
+                        href="{{ route('admin.products.categories.index') }}">
+                        {{ __('Kategori') }}
+                    </a>
+                </div>
+            </div>
+        </div>
     </li>
     <li class="nav-item {{ Request::is('admin/feedbacks') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('admin.feedbacks.index') }}">

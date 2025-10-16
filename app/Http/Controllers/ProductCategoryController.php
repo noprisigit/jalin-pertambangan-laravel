@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\FlashMsg;
-use App\Models\PostCategory;
+use App\Models\ProductCategory;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class PostCategoryController extends Controller
+class ProductCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.pages.post.category.category-index');
+        return view('admin.pages.product.category.category-index');
     }
 
     /**
@@ -25,14 +25,14 @@ class PostCategoryController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255', 'unique:post_categories,name']
+            'name' => ['required', 'string', 'max:255', 'unique:product_categories,name']
         ], [], [
             'name' => __('Nama Kategori')
         ]);
 
         try {
             $validated['created_by'] = Auth::id();
-            PostCategory::query()->create($validated);
+            ProductCategory::query()->create($validated);
 
             return response()->json([
                 'status' => true,
@@ -54,16 +54,16 @@ class PostCategoryController extends Controller
     public function update(Request $request, string $id)
     {
         $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255', 'unique:post_categories,name,' . $id]
+            'name' => ['required', 'string', 'max:255', 'unique:product_categories,name,' . $id]
         ], [], [
             'name' => __('Nama Kategori')
         ]);
 
-        $postCategory = PostCategory::query()->findOrFail($id);
+        $productCategory = ProductCategory::query()->findOrFail($id);
 
         try {
             $validated['updated_by'] = Auth::id();
-            $postCategory->update($validated);
+            $productCategory->update($validated);
 
             return response()->json([
                 'status' => true,
@@ -84,10 +84,10 @@ class PostCategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        $postCategory = PostCategory::query()->findOrFail($id);
+        $productCategory = ProductCategory::query()->findOrFail($id);
 
         try {
-            $postCategory->delete();
+            $productCategory->delete();
 
             return response()->json([
                 'status' => true,

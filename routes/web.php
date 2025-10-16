@@ -17,9 +17,7 @@ Route::redirect('/admin', '/admin/dashboard');
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::post('/logout', \App\Http\Controllers\Auth\LogoutController::class)->name('logout');
 
-    Route::get('/dashboard', function () {
-        return view('admin.pages.dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', \App\Http\Controllers\DashboardController::class)->name('dashboard');
 
     Route::get('/settings', [\App\Http\Controllers\SystemSettingController::class, 'index'])->name('settings.index');
     Route::post('/settings', [\App\Http\Controllers\SystemSettingController::class, 'store'])->name('settings.store');
@@ -27,8 +25,11 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
 
     Route::resource('users', \App\Http\Controllers\UserController::class);
 
-    Route::resource('posts/categories', \App\Http\Controllers\PostCategoryController::class, ['as' => 'posts']);
+    Route::resource('posts/categories', \App\Http\Controllers\PostCategoryController::class, ['as' => 'posts'])->except(['create', 'edit', 'show']);
     Route::resource('posts', \App\Http\Controllers\PostController::class);
+
+    Route::resource('products/categories', \App\Http\Controllers\ProductCategoryController::class, ['as' => 'products'])->except(['create', 'edit', 'show']);
+    Route::resource('products', \App\Http\Controllers\ProductController::class);
 
     Route::resource('services', \App\Http\Controllers\ServiceController::class)->except(['create', 'edit', 'show']);
 
