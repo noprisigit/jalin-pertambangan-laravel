@@ -303,9 +303,13 @@
                             {{ __('About Us') }}
                         </a>
                     </li>
-                    <li><a href="#our-expert" class="jp-scroll">Our Expert</a></li>
-                    <li><a href="#our-services" class="jp-scroll">Our Services</a></li>
-                    <li><a href="#contact" class="jp-scroll">Contact</a></li>
+                    <li>
+                        <a href="{{ route('landing.home') }}#our-expert" class="jp-scroll">
+                            {{ __('Our Expert') }}
+                        </a>
+                    </li>
+                    <li><a href="{{ route('landing.services') }}" class="jp-scroll">Our Services</a></li>
+                    <li><a href="{{ route('landing.home') }}#rs-contact" class="jp-scroll">{{ __('Contact') }}</a></li>
                 </ul>
             </div>
 

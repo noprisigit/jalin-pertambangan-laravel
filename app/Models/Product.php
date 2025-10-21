@@ -26,9 +26,21 @@ class Product extends Model
 
     protected static function booted(): void
     {
+        static::creating(function ($product) {
+            if (empty($product->slug)) {
+                $product->slug = Str::slug($product->name);
+            }
+        });
+
+        static::updating(function ($product) {
+            if ($product->isDirty('name') && empty($product->slug)) {
+                $product->slug = Str::slug($product->name);
+            }
+        });
+
         static::deleting(function (Product $product) {
             // pastikan relasi ter-load
-            $product->loadMissing('files:id,path,post_id');
+            $product->loadMissing('files:id,path,product_id');
 
             // hapus file satu per satu
             foreach ($product->files as $pf) {
@@ -37,7 +49,7 @@ class Product extends Model
                 }
             }
 
-            // opsional: hapus folder khusus post ini
+            // opsional: hapus folder khusus product ini
             $dir = "uploads/products/files/{$product->id}";
             if (Storage::disk('public')->exists($dir)) {
                 Storage::disk('public')->deleteDirectory($dir);
@@ -53,7 +65,7 @@ class Product extends Model
 
     public function getThumbnailUrlAttribute()
     {
-        if (Str::startsWith($this->thumbnail, 'uploads/posts/thumbnails')) {
+        if (Str::startsWith($this->thumbnail, 'uploads/products/thumbnails')) {
             return asset('storage/' . $this->thumbnail);
         }
 

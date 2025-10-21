@@ -21,7 +21,10 @@
                                     <li><a class="jp-scroll" href="{{ route('landing.blogs') }}">News</a></li>
                                     <li><a class="jp-scroll" href="{{ route('landing.about') }}">About Us</a></li>
                                     <li><a class="jp-scroll" href="#our-expert">Our Expert</a></li>
-                                    <li class="menu-item-has-children">
+                                    <li><a class="jp-scroll" href="{{ route('landing.services') }}">Our Services</a></li>
+                                    <li><a class="jp-scroll" href="{{ route('landing.products') }}">Our Products</a></li>
+                                    
+                                    <!-- <li class="menu-item-has-children">
                                         <a class="jp-scroll" href="#our-services">Our Services</a>
                                         <ul class="sub-menu">
                                             <li><a class="jp-scroll" href="#our-services">Diskusi</a></li>
@@ -29,8 +32,8 @@
                                             <li><a class="jp-scroll" href="#our-services">Pendampingan</a>
                                             </li>
                                         </ul>
-                                    </li>
-                                    <li><a class="jp-scroll" href="#contact">Contact</a></li>
+                                    </li> -->
+                                    <li><a class="jp-scroll" href="#rs-contact">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>

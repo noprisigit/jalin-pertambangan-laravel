@@ -9,6 +9,8 @@ Route::get('/', [\App\Http\Controllers\LandingController::class, 'home'])->name(
 Route::get('/about', [\App\Http\Controllers\LandingController::class, 'about'])->name('landing.about');
 Route::get('/services', [\App\Http\Controllers\LandingController::class, 'services'])->name('landing.services');
 Route::get('/blogs', [\App\Http\Controllers\LandingController::class, 'blogs'])->name('landing.blogs');
+Route::get('/products', [\App\Http\Controllers\LandingController::class, 'products'])->name('landing.products');
+Route::get('/products/{slug}', [\App\Http\Controllers\LandingController::class, 'productDetail'])->name('landing.product.detail');
 
 Route::post('/feedbacks', [\App\Http\Controllers\FeedbackController::class, 'store'])->name('feedback.store');
 
