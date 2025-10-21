@@ -1881,12 +1881,15 @@
                                     kebutuhan klien.
                                 </p>
                                 <div class="d-flex flex-wrap cta-wrap">
-                                    <a href="#our-services" class="btn btn-hero btn-primary-hero">
+                                    <a href="#rs-services" class="btn btn-hero btn-primary-hero">
                                         <i class="bi bi-rocket-takeoff me-2"></i>Jelajahi Layanan
                                     </a>
-                                    <a href="#contact" class="btn btn-hero btn-outline-hero">
-                                        <i class="bi bi-whatsapp me-2"></i>Hubungi via WhatsApp
-                                    </a>
+                                    @if (getStaticContent('phone'))
+                                        <a href="https://wa.me/{{ getStaticContent('phone') }}"
+                                            class="btn btn-hero btn-outline-hero">
+                                            <i class="bi bi-whatsapp me-2"></i>Hubungi via WhatsApp
+                                        </a>
+                                    @endif
                                 </div>
                                 <div class="trust">
                                     <span class="chip"><i class="bi bi-award"></i> IPU & CPI Certified</span>
@@ -2080,16 +2083,16 @@
 
     <!-- Hapus rs-slider yang lama -->
     <!--
-                                                                                                        <div id="rs-slider" class="rs-slider slider1">
-                                                                                                          <div class="bend niceties">
-                                                                                                            <div id="nivoSlider" class="slides">
-                                                                                                              <img src="assets/images/bahan/bahan1.jpg" alt="JP Hero" title="#slide-1" />
-                                                                                                              <img src="assets/images/bahan/bahan2.jpg" alt="JP Hero 2" title="#slide-2" />
-                                                                                                            </div>
-                                                                                                            ...
-                                                                                                                  </div>
-                                                                                                                  </div>
-                                                                                                        -->
+                                                                                                            <div id="rs-slider" class="rs-slider slider1">
+                                                                                                              <div class="bend niceties">
+                                                                                                                <div id="nivoSlider" class="slides">
+                                                                                                                  <img src="assets/images/bahan/bahan1.jpg" alt="JP Hero" title="#slide-1" />
+                                                                                                                  <img src="assets/images/bahan/bahan2.jpg" alt="JP Hero 2" title="#slide-2" />
+                                                                                                                </div>
+                                                                                                                ...
+                                                                                                                      </div>
+                                                                                                                      </div>
+                                                                                                            -->
 
     <!-- Services Mini Section Start -->
     <div class="rs-services style1 pt-100 pb-84 md-pt-80 md-pb-64">
@@ -2673,7 +2676,8 @@
                         </div>
                         <div class="content-part">
                             @if ($post->category)
-                                <a class="categories" href="{{ route('landing.blogs.categories', ['slug' => Str::slug($post->category->name)]) }}">{{ $post->category->name }}</a>
+                                <a class="categories"
+                                    href="{{ route('landing.blogs.categories', ['slug' => Str::slug($post->category->name)]) }}">{{ $post->category->name }}</a>
                             @endif
 
                             <h3 class="title">

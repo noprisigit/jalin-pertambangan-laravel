@@ -1130,7 +1130,7 @@
                         <li>Pendampingan Transformasi untuk pengambilan keputusan berkelanjutan</li>
                     </ul>
                     <div class="btn-part mt-20">
-                        <a class="readon" href="#our-services">Jelajahi Layanan</a>
+                        <a class="readon" href="#rs-services">Jelajahi Layanan</a>
                     </div>
                 </div>
             </div>
