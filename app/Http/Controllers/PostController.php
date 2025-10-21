@@ -83,7 +83,7 @@ class PostController extends Controller
                     $categoryId = $validated['post_category_id'];
                 } else {
                     $newCategory = PostCategory::query()->create([
-                        'nama' => $validated['post_category_id'],
+                        'name' => $validated['post_category_id'],
                         'created_by' => Auth::id(),
                     ]);
 
@@ -211,7 +211,7 @@ class PostController extends Controller
                     $categoryId = $validated['post_category_id'];
                 } else {
                     $newCategory = PostCategory::query()->create([
-                        'nama' => $validated['post_category_id'],
+                        'name' => $validated['post_category_id'],
                         'created_by' => Auth::id(),
                     ]);
 
