@@ -4,6 +4,68 @@
 
 @push('css')
     <style>
+        :root {
+            /* Modern Color Palette */
+            --primary-50: #f0f9ff;
+            --primary-100: #e0f2fe;
+            --primary-200: #bae6fd;
+            --primary-300: #89b7fc;
+            --primary-400: #3e88f8;
+            --primary-500: #267bfa;
+            --primary-600: #0d6efd;
+            --primary-700: #0369a1;
+            --primary-800: #075985;
+            --primary-900: #0c4a6e;
+
+            --secondary-50: #f8fafc;
+            --secondary-100: #f1f5f9;
+            --secondary-200: #e2e8f0;
+            --secondary-300: #cbd5e1;
+            --secondary-400: #94a3b8;
+            --secondary-500: #64748b;
+            --secondary-600: #475569;
+            --secondary-700: #334155;
+            --secondary-800: #1e293b;
+            --secondary-900: #0f172a;
+
+            --success-500: #10b981;
+            --warning-500: #f59e0b;
+            --error-500: #ef4444;
+
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.875rem;
+            --font-size-4xl: 2.25rem;
+
+            --border-radius-sm: 0.375rem;
+            --border-radius-md: 0.5rem;
+            --border-radius-lg: 0.75rem;
+            --border-radius-xl: 1rem;
+            --border-radius-2xl: 1.5rem;
+            --border-radius-full: 9999px;
+
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
         /* Product Detail Styles */
         .jp-product-detail-section {
             position: relative;
@@ -216,12 +278,36 @@
             font-weight: 700;
             color: var(--success-500);
         }
+
+        .jp-product-btn {
+            display: inline-block;
+            padding: var(--space-3) var(--space-6);
+            background: linear-gradient(135deg,
+                    var(--primary-500) 0%,
+                    var(--primary-600) 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius-lg);
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+            width: 100%;
+            text-align: center;
+        }
+
+        .jp-product-btn:hover {
+            background: linear-gradient(135deg,
+                    var(--primary-600) 0%,
+                    var(--primary-700) 100%);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            color: white;
+        }
     </style>
 @endpush
 
 @section('content')
-    <hr style="margin-top: 80px;">
-    
     <!-- Breadcrumbs Section Start -->
     <div class="rs-breadcrumbs bg-2 jp-breadcrumbs">
         <div class="container">
@@ -240,94 +326,94 @@
                 <div class="col-lg-8 mb-30">
                     <div class="jp-product-detail-card">
                         <div class="jp-product-gallery">
-                            <img src="{{ $product->thumbnail_url }}" 
-                                 alt="{{ $product->name }}" 
-                                 class="jp-product-main-image" 
-                                 id="mainImage">
-                            
-                            @if($product->files->count() > 0)
+                            <img src="{{ $product->thumbnail_url }}" alt="{{ $product->name }}"
+                                class="jp-product-main-image" id="mainImage">
+
+                            @if ($product->files->count() > 0)
                                 <div class="jp-product-thumbnails">
-                                    <img src="{{ $product->thumbnail_url }}" 
-                                         alt="{{ $product->name }}" 
-                                         class="jp-product-thumbnail active"
-                                         onclick="changeMainImage(this.src)">
-                                    
-                                    @foreach($product->files as $file)
-                                        <img src="{{ asset('storage/' . $file->path) }}" 
-                                             alt="{{ $product->name }}" 
-                                             class="jp-product-thumbnail"
-                                             onclick="changeMainImage(this.src)">
+                                    <img src="{{ $product->thumbnail_url }}" alt="{{ $product->name }}"
+                                        class="jp-product-thumbnail active" onclick="changeMainImage(this.src)">
+
+                                    @foreach ($product->files as $file)
+                                        <img src="{{ asset('storage/' . $file->path) }}" alt="{{ $product->name }}"
+                                            class="jp-product-thumbnail" onclick="changeMainImage(this.src)">
                                     @endforeach
                                 </div>
                             @endif
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4 mb-30">
                     <div class="jp-product-detail-card">
                         <div class="jp-product-info">
-                            @if($product->category)
+                            @if ($product->category)
                                 <span class="jp-product-category">{{ $product->category->name }}</span>
                             @endif
-                            
+
                             <h1 class="jp-product-title">{{ $product->name }}</h1>
-                            
-                            @if($product->price)
+
+                            @if ($product->price)
                                 <div class="jp-product-price">
                                     Rp {{ number_format($product->price, 0, ',', '.') }}
                                 </div>
                             @endif
-                            
+
                             <div class="jp-product-description">
                                 {!! $product->description !!}
                             </div>
-                            
+
                             <div class="jp-product-meta">
                                 <div class="jp-meta-item">
                                     <i class="fa fa-calendar"></i>
                                     <span class="jp-meta-text">{{ $product->created_at->format('d M Y') }}</span>
                                 </div>
-                                
-                                @if($product->creator)
+
+                                @if ($product->creator)
                                     <div class="jp-meta-item">
                                         <i class="fa fa-user"></i>
                                         <span class="jp-meta-text">{{ $product->creator->name }}</span>
                                     </div>
                                 @endif
-                                
-                                @if($product->updated_at != $product->created_at)
+
+                                @if ($product->updated_at != $product->created_at)
                                     <div class="jp-meta-item">
                                         <i class="fa fa-edit"></i>
-                                        <span class="jp-meta-text">Diperbarui {{ $product->updated_at->format('d M Y') }}</span>
+                                        <span class="jp-meta-text">Diperbarui
+                                            {{ $product->updated_at->format('d M Y') }}</span>
                                     </div>
                                 @endif
                             </div>
-                            
-                            <a href="#rs-contact" class="jp-contact-btn">Hubungi Kami</a>
+
+                            @if (getStaticContent('phone'))
+                                <a href="https://wa.me/{{ getStaticContent('phone') }}" target="_blank"
+                                    class="jp-product-btn">
+                                    <i class="fas fa-phone"></i>
+                                    {{ __('Hubungi Kami') }}
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Related Products -->
-            @if($relatedProducts->count() > 0)
+            @if ($relatedProducts->count() > 0)
                 <div class="jp-related-products">
                     <h2 class="jp-related-title">Produk Terkait</h2>
                     <div class="row">
-                        @foreach($relatedProducts as $relatedProduct)
+                        @foreach ($relatedProducts as $relatedProduct)
                             <div class="col-lg-3 col-md-6 mb-30">
                                 <div class="jp-related-card">
-                                    <img src="{{ $relatedProduct->thumbnail_url }}" 
-                                         alt="{{ $relatedProduct->name }}" 
-                                         class="jp-related-image">
+                                    <img src="{{ $relatedProduct->thumbnail_url }}" alt="{{ $relatedProduct->name }}"
+                                        class="jp-related-image">
                                     <div class="jp-related-content">
                                         <h3 class="jp-related-name">
                                             <a href="{{ route('landing.product.detail', $relatedProduct->slug) }}">
                                                 {{ $relatedProduct->name }}
                                             </a>
                                         </h3>
-                                        @if($relatedProduct->price)
+                                        @if ($relatedProduct->price)
                                             <div class="jp-related-price">
                                                 Rp {{ number_format($relatedProduct->price, 0, ',', '.') }}
                                             </div>
@@ -345,15 +431,15 @@
 @endsection
 
 @push('js')
-<script>
-function changeMainImage(src) {
-    document.getElementById('mainImage').src = src;
-    
-    // Update active thumbnail
-    document.querySelectorAll('.jp-product-thumbnail').forEach(thumb => {
-        thumb.classList.remove('active');
-    });
-    event.target.classList.add('active');
-}
-</script>
+    <script>
+        function changeMainImage(src) {
+            document.getElementById('mainImage').src = src;
+
+            // Update active thumbnail
+            document.querySelectorAll('.jp-product-thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+    </script>
 @endpush

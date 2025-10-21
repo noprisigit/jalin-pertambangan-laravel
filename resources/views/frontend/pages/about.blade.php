@@ -1,5 +1,7 @@
 @extends('frontend.app')
 
+@section('title', __('Tentang Kami'))
+
 @push('css')
     <style>
         /* ===== CSS RESET & MODERN FOUNDATION ===== */
@@ -1088,15 +1090,26 @@
                             </div>
 
                             <div class="jp-author-social">
-                                <a href="#" class="jp-social-link" title="LinkedIn">
-                                    <i class="fa fa-linkedin"></i>
-                                </a>
-                                <a href="#" class="jp-social-link" title="Email">
-                                    <i class="fa fa-envelope"></i>
-                                </a>
-                                <a href="#" class="jp-social-link" title="WhatsApp">
-                                    <i class="fa fa-whatsapp"></i>
-                                </a>
+                                @if (getStaticContent('linkedin'))
+                                    <a href="{{ getStaticContent('linkedin') }}" target="_blank" class="jp-social-link"
+                                        title="LinkedIn">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                @endif
+
+                                @if (getStaticContent('email'))
+                                    <a href="mailto:{{ getStaticContent('email') }}" target="_blank" class="jp-social-link"
+                                        title="Email">
+                                        <i class="fa fa-envelope"></i>
+                                    </a>
+                                @endif
+
+                                @if (getStaticContent('phone'))
+                                    <a href="https://wa.me/{{ getStaticContent('phone') }}" target="_blank"
+                                        class="jp-social-link" title="WhatsApp">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </a>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -1304,28 +1317,31 @@
                 <div class="col-lg-6"></div>
                 <div class="col-lg-6 pl-65 md-pl-15">
                     <div id="form-messages" class="white-color"></div>
-                    <form id="contact-form" class="quote-form" method="post" action="#">
+                    <form id="feedbackForm" class="quote-form" method="post" action="{{ route('feedback.store') }}">
+                        @csrf
                         <div class="sec-title mb-53">
                             <div class="sub-title white-color">Mari Berdiskusi</div>
                             <h2 class="title white-color mb-0">Konsultasi Gratis</h2>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
-                                <input type="text" name="name" placeholder="Nama Lengkap" required="">
+                            <div class="col-md-6 mb-4">
+                                <input type="text" name="name" id="name" placeholder="Nama Lengkap"
+                                    class="mb-0">
                             </div>
-                            <div class="col-md-6">
-                                <input type="email" name="email" placeholder="Email" required="">
+                            <div class="col-md-6 mb-4">
+                                <input type="email" name="email" id="email" placeholder="Email" class="mb-0">
                             </div>
-                            <div class="col-md-6">
-                                <input type="text" name="phone" placeholder="No. Telepon/WA" required="">
+                            <div class="col-md-6 mb-4">
+                                <input type="text" name="phone" id="phone" placeholder="No. Telepon/WA"
+                                    class="mb-0">
                             </div>
-                            <div class="col-md-6">
-                                <input type="text" name="company" placeholder="Perusahaan" required="">
+                            <div class="col-md-6 mb-4">
+                                <input type="text" name="company" id="company" placeholder="Perusahaan"
+                                    class="mb-0">
                             </div>
-                            <div class="col-md-12">
-                                <textarea name="message"
-                                    placeholder="Jelaskan kebutuhan konsultasi Anda (Diskusi/Edukasi/Pelatihan/Asistensi/Pendampingan)"
-                                    required=""></textarea>
+                            <div class="col-md-12 mb-4">
+                                <textarea name="message" id="message" class="mb-0"
+                                    placeholder="Jelaskan kebutuhan konsultasi Anda (Diskusi/Edukasi/Pelatihan/Asistensi/Pendampingan)"></textarea>
                             </div>
                             <div class="col-md-12">
                                 <button type="submit" class="readon modify">Kirim Permintaan</button>
@@ -1338,3 +1354,39 @@
     </div>
     <!-- Free Quote Section End -->
 @endsection
+
+@push('js')
+    <script>
+        $(document).ready(function() {
+            $(document).on('submit', '#feedbackForm', function(e) {
+                e.preventDefault();
+
+                const $form = $(this);
+                const $submitBtn = $form.find('[type="submit"]');
+                const originalBtnHtml = $submitBtn.html();
+
+                $form.find('.is-invalid').removeClass('is-invalid border border-danger');
+
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: $(this).attr('method'),
+                    data: $(this).serialize(),
+                    dataType: 'json',
+                    beforeSend: function() {
+                        handle_before_submit_form('#feedbackForm');
+                    },
+                    success: function(res) {
+                        show_sweetalert_success(res.message);
+                        $form.trigger('reset');
+                    },
+                    error: function(err) {
+                        handle_error_exception(err);
+                    },
+                    complete: function() {
+                        handle_submit_completed('#feedbackForm', originalBtnHtml);
+                    }
+                });
+            });
+        });
+    </script>
+@endpush

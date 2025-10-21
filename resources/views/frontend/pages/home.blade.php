@@ -398,54 +398,6 @@
             }
         }
 
-
-        .jp-wa-float {
-            position: fixed;
-            right: 70px;
-            bottom: 25px;
-            z-index: 9999
-        }
-
-        .jp-wa-float a {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: #25D366;
-            color: #fff;
-            padding: 12px 16px;
-            border-radius: 50px;
-            font-weight: 600;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, .2)
-        }
-
-        .jp-wa-float a .wa-badge {
-            background: rgba(255, 255, 255, .15);
-            padding: 3px 8px;
-            border-radius: 20px;
-            font-size: 12px
-        }
-
-        #scrollUp {
-            animation: pulse 2.2s infinite
-        }
-
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(47, 92, 233, .45)
-            }
-
-            70% {
-                box-shadow: 0 0 0 20px rgba(47, 92, 233, 0)
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(47, 92, 233, 0)
-            }
-        }
-
-
-
-
         .jp-about-section .images-part {
             position: relative;
             margin-top: -700px;

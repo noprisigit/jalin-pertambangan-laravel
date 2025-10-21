@@ -46,7 +46,8 @@
                         </label>
                         <div class="col col-lg-10">
                             <input type="text" name="workingHour" id="workingHour" class="form-control"
-                                placeholder="{{ __("Senin - Jum'at: 08.00 - 16.00 WIB") }}" value="{{ getStaticContent('workingHour') }}">
+                                placeholder="{{ __("Senin - Jum'at: 08.00 - 16.00 WIB") }}"
+                                value="{{ getStaticContent('workingHour') }}">
                         </div>
                     </div>
                     <div class="text-start row">
@@ -65,12 +66,23 @@
 
     <div class="row mt-5">
         <div class="col-12">
-            <form class="card" id="socialMediaForm" method="POST" action="{{ route('admin.settings.store-social-media') }}">
+            <form class="card" id="socialMediaForm" method="POST"
+                action="{{ route('admin.settings.store-social-media') }}">
                 @csrf
                 <div class="card-header">
                     <h3 class="card-title">{{ __('Pengaturan Sosial Media') }}</h3>
                 </div>
                 <div class="card-body">
+                    <div class="mb-3 row">
+                        <label for="linkedin" class="col-3 col-lg-2 col-form-label">
+                            {{ __('Linkedin') }}
+                        </label>
+                        <div class="col col-lg-10">
+                            <input type="url" name="linkedin" id="linkedin" class="form-control"
+                                placeholder="{{ __('Masukkan Alamat Linkedin Anda') }}"
+                                value="{{ getStaticContent('linkedin') }}">
+                        </div>
+                    </div>
                     <div class="mb-3 row">
                         <label for="facebook" class="col-3 col-lg-2 col-form-label">
                             {{ __('Facebook') }}
