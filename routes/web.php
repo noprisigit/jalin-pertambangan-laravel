@@ -8,6 +8,9 @@ Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'login
 Route::get('/', [\App\Http\Controllers\LandingController::class, 'home'])->name('landing.home');
 Route::get('/about', [\App\Http\Controllers\LandingController::class, 'about'])->name('landing.about');
 Route::get('/services', [\App\Http\Controllers\LandingController::class, 'services'])->name('landing.services');
+Route::get('/blogs/categories/{slug}', [\App\Http\Controllers\LandingController::class, 'blogsByCategory'])
+    ->name('landing.blogs.categories');
+Route::get('/blogs/{slug}', [\App\Http\Controllers\LandingController::class, 'blogDetail'])->name('landing.blogs.detail');
 Route::get('/blogs', [\App\Http\Controllers\LandingController::class, 'blogs'])->name('landing.blogs');
 Route::get('/products', [\App\Http\Controllers\LandingController::class, 'products'])->name('landing.products');
 Route::get('/products/{slug}', [\App\Http\Controllers\LandingController::class, 'productDetail'])->name('landing.product.detail');

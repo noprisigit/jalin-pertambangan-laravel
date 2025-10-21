@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\PostCategory;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Models\Product;
 use App\Models\ProductCategory;
 
@@ -45,9 +46,17 @@ class LandingController extends Controller
 
     public function blogs()
     {
+        $search = request()->get('q', '');
+
         $posts = Post::query()
             ->with('category')
             ->where('status', 'publish')
+            ->when($search, function ($query, $search) {
+                $query->where(function ($q) use ($search) {
+                    $q->where('title', 'like', "%{$search}%")
+                        ->orWhere('content', 'like', "%{$search}%");
+                });
+            })
             ->latest()
             ->take(9)
             ->get();
@@ -66,6 +75,64 @@ class LandingController extends Controller
         return view('frontend.pages.blogs', compact('posts', 'newestPosts', 'categories'));
     }
 
+    public function blogDetail($slug)
+    {
+        $post = Post::query()
+            ->with(['user', 'category', 'files', 'creator', 'updater'])
+            ->where('slug', $slug)
+            ->where('status', 'publish')
+            ->firstOrFail();
+
+        $nextPost = Post::query()
+            ->with('category')
+            ->where('status', 'publish')
+            ->where('id', '>', $post->id)
+            ->orderBy('id', 'asc')
+            ->first();
+
+        $newestPosts = Post::query()
+            ->with('category')
+            ->where('status', 'publish')
+            ->where('id', '!=', $post->id)
+            ->latest()
+            ->take(5)
+            ->get();
+
+        $categories = PostCategory::query()
+            ->withCount('posts')
+            ->get();
+
+        return view('frontend.pages.blogs-detail', compact('post', 'nextPost', 'categories', 'newestPosts'));
+    }
+
+    public function blogsByCategory($slug)
+    {
+        $category = PostCategory::get()->first(function ($cat) use ($slug) {
+            return Str::slug($cat->name) === $slug;
+        });
+
+        $posts = Post::query()
+            ->with('category')
+            ->where('post_category_id', $category->id)
+            ->where('status', 'publish')
+            ->latest()
+            ->take(9)
+            ->get();
+
+        $newestPosts = Post::query()
+            ->with('category')
+            ->where('status', 'publish')
+            ->latest()
+            ->take(5)
+            ->get();
+
+        $categories = PostCategory::query()
+            ->withCount('posts')
+            ->get();
+
+        return view('frontend.pages.blogs-by-category', compact('category', 'posts', 'newestPosts', 'categories'));
+    }
+
     public function products(Request $request)
     {
         $query = Product::query()
@@ -80,9 +147,9 @@ class LandingController extends Controller
         // Search functionality
         if ($request->has('search') && $request->get('search')) {
             $searchTerm = $request->get('search');
-            $query->where(function($q) use ($searchTerm) {
+            $query->where(function ($q) use ($searchTerm) {
                 $q->where('name', 'like', "%{$searchTerm}%")
-                  ->orWhere('description', 'like', "%{$searchTerm}%");
+                    ->orWhere('description', 'like', "%{$searchTerm}%");
             });
         }
 
@@ -109,7 +176,7 @@ class LandingController extends Controller
         $products = $query->paginate(12)->withQueryString();
 
         $categories = ProductCategory::query()
-            ->withCount(['products' => function($query) {
+            ->withCount(['products' => function ($query) {
                 $query->where('is_active', true);
             }])
             ->get();
@@ -126,10 +193,10 @@ class LandingController extends Controller
         $totalCategories = ProductCategory::count();
 
         return view('frontend.pages.products', compact(
-            'products', 
-            'categories', 
-            'featuredProducts', 
-            'totalProducts', 
+            'products',
+            'categories',
+            'featuredProducts',
+            'totalProducts',
             'totalCategories'
         ));
     }
