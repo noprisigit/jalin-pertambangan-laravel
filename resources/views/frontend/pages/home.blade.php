@@ -398,54 +398,6 @@
             }
         }
 
-
-        .jp-wa-float {
-            position: fixed;
-            right: 70px;
-            bottom: 25px;
-            z-index: 9999
-        }
-
-        .jp-wa-float a {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: #25D366;
-            color: #fff;
-            padding: 12px 16px;
-            border-radius: 50px;
-            font-weight: 600;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, .2)
-        }
-
-        .jp-wa-float a .wa-badge {
-            background: rgba(255, 255, 255, .15);
-            padding: 3px 8px;
-            border-radius: 20px;
-            font-size: 12px
-        }
-
-        #scrollUp {
-            animation: pulse 2.2s infinite
-        }
-
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(47, 92, 233, .45)
-            }
-
-            70% {
-                box-shadow: 0 0 0 20px rgba(47, 92, 233, 0)
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(47, 92, 233, 0)
-            }
-        }
-
-
-
-
         .jp-about-section .images-part {
             position: relative;
             margin-top: -700px;
@@ -2047,12 +1999,15 @@
                                     kebutuhan klien.
                                 </p>
                                 <div class="d-flex flex-wrap cta-wrap">
-                                    <a href="#our-services" class="btn btn-hero btn-primary-hero">
+                                    <a href="#rs-services" class="btn btn-hero btn-primary-hero">
                                         <i class="bi bi-rocket-takeoff me-2"></i>Jelajahi Layanan
                                     </a>
-                                    <a href="#contact" class="btn btn-hero btn-outline-hero">
-                                        <i class="bi bi-whatsapp me-2"></i>Hubungi via WhatsApp
-                                    </a>
+                                    @if (getStaticContent('phone'))
+                                        <a href="https://wa.me/{{ getStaticContent('phone') }}"
+                                            class="btn btn-hero btn-outline-hero">
+                                            <i class="bi bi-whatsapp me-2"></i>Hubungi via WhatsApp
+                                        </a>
+                                    @endif
                                 </div>
                                 <div class="trust">
                                     <span class="chip"><i class="bi bi-award"></i> IPU & CPI Certified</span>
@@ -2239,16 +2194,16 @@
 
     <!-- Hapus rs-slider yang lama -->
     <!--
-                                                                                    <div id="rs-slider" class="rs-slider slider1">
-                                                                                      <div class="bend niceties">
-                                                                                        <div id="nivoSlider" class="slides">
-                                                                                          <img src="assets/images/bahan/bahan1.jpg" alt="JP Hero" title="#slide-1" />
-                                                                                          <img src="assets/images/bahan/bahan2.jpg" alt="JP Hero 2" title="#slide-2" />
-                                                                                        </div>
-                                                                                        ...
-                                                                                              </div>
-                                                                                              </div>
-                                                                                    -->
+                                                                                                            <div id="rs-slider" class="rs-slider slider1">
+                                                                                                              <div class="bend niceties">
+                                                                                                                <div id="nivoSlider" class="slides">
+                                                                                                                  <img src="assets/images/bahan/bahan1.jpg" alt="JP Hero" title="#slide-1" />
+                                                                                                                  <img src="assets/images/bahan/bahan2.jpg" alt="JP Hero 2" title="#slide-2" />
+                                                                                                                </div>
+                                                                                                                ...
+                                                                                                                      </div>
+                                                                                                                      </div>
+                                                                                                            -->
 
     <!-- Services Mini Section Start -->
     <div class="rs-services style1 pt-100 pb-84 md-pt-80 md-pb-64">
@@ -2801,31 +2756,38 @@
                 </div>
                 <div class="col-md-6">
                     <div class="btn-part text-right sm-text-left">
-                        <a class="readon" href="blog-single.html">Lihat Semua</a>
+                        <a class="readon" href="{{ route('landing.blogs') }}">Lihat Semua</a>
                     </div>
                 </div>
             </div>
-            <div class="rs-carousel owl-carousel dot-style1" data-loop="true" data-items="3" data-margin="30"
-                data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800"
-                data-dots="true" data-nav="false" data-center-mode="false" data-mobile-device="1" data-ipad-device="2"
-                data-ipad-device2="1" data-md-device="3" data-lg-device="3">
+
+            {{-- <div data-loop="true" data-items="{{ $posts->count() }}"
+                data-margin="30" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000"
+                data-smart-speed="800" data-dots="true" data-nav="false" data-center-mode="false"
+                data-mobile-device="1" data-ipad-device="2" data-ipad-device2="1" data-md-device="3"
+                data-lg-device="3"></div> --}}
+
+            <div class="rs-carousel owl-carousel dot-style1">
                 @foreach ($posts as $post)
                     <div class="blog-wrap">
                         <div class="img-part">
                             <img src="{{ $post->thumbnail_url }}" alt="{{ $post->title }}">
                             <div class="fly-btn">
-                                <a href="blog-single.html">
+                                <a href="{{ route('landing.blogs.detail', ['slug' => $post->slug]) }}">
                                     <i class="flaticon-right-arrow"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="content-part">
                             @if ($post->category)
-                                <a class="categories" href="blog-single.html">{{ $post->category->name }}</a>
+                                <a class="categories"
+                                    href="{{ route('landing.blogs.categories', ['slug' => Str::slug($post->category->name)]) }}">{{ $post->category->name }}</a>
                             @endif
 
                             <h3 class="title">
-                                <a href="blog-single.html">{{ $post->title }}</a>
+                                <a href="{{ route('landing.blogs.detail', ['slug' => $post->slug]) }}">
+                                    {{ $post->title }}
+                                </a>
                             </h3>
 
                             <div class="blog-meta">

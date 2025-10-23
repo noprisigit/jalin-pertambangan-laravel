@@ -41,6 +41,52 @@
     <!-- Swiper (CDN) -->
     <link href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" rel="stylesheet">
 
+    <style>
+        .jp-wa-float {
+            position: fixed;
+            right: 70px;
+            bottom: 25px;
+            z-index: 9999
+        }
+
+        .jp-wa-float a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #25D366;
+            color: #fff;
+            padding: 12px 16px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .2)
+        }
+
+        .jp-wa-float a .wa-badge {
+            background: rgba(255, 255, 255, .15);
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 12px
+        }
+
+        #scrollUp {
+            animation: pulse 2.2s infinite
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(47, 92, 233, .45)
+            }
+
+            70% {
+                box-shadow: 0 0 0 20px rgba(47, 92, 233, 0)
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(47, 92, 233, 0)
+            }
+        }
+    </style>
+
     @stack('css')
 </head>
 
@@ -270,8 +316,8 @@
     <nav class="jp-offcanvas" id="jp-offcanvas">
         <div class="jp-offcanvas-header">
             <div class="jp-offcanvas-logo">
-                <a href="index.html">
-                    <img src="assets/logo_bg.png" alt="Jalin Pertambangan Logo">
+                <a href="">
+                    <img src="{{ asset('assets/logo_bg.png') }}" alt="Jalin Pertambangan Logo">
                 </a>
             </div>
             <button class="jp-offcanvas-close" id="jp-offcanvas-close" aria-label="Close Menu">
@@ -289,17 +335,20 @@
                 <h3>Navigasi</h3>
                 <ul>
                     <li>
-                        <a href="{{ route('landing.home') }}" class="jp-scroll">
+                        <a href="{{ route('landing.home') }}"
+                            class="jp-scroll @if (Request::is('/')) jp-active @endif">
                             {{ __('Home') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('landing.blogs') }}" class="jp-scroll">
+                        <a href="{{ route('landing.blogs') }}"
+                            class="jp-scroll @if (Request::is('blogs*')) jp-active @endif">
                             {{ __('News') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('landing.about') }}" class="jp-scroll">
+                        <a href="{{ route('landing.about') }}"
+                            class="jp-scroll @if (Request::is('about*')) jp-active @endif">
                             {{ __('About Us') }}
                         </a>
                     </li>
@@ -308,8 +357,23 @@
                             {{ __('Our Expert') }}
                         </a>
                     </li>
-                    <li><a href="{{ route('landing.services') }}" class="jp-scroll">Our Services</a></li>
-                    <li><a href="{{ route('landing.home') }}#rs-contact" class="jp-scroll">{{ __('Contact') }}</a></li>
+                    <li>
+                        <a href="{{ route('landing.services') }}"
+                            class="jp-scroll @if (Request::is('services*')) jp-active @endif">
+                            {{ __('Our Services') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('landing.products') }}"
+                            class="jp-scroll @if (Request::is('products*')) jp-active @endif">
+                            {{ __('Our Products') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('landing.home') }}#rs-contact" class="jp-scroll">
+                            {{ __('Contact') }}
+                        </a>
+                    </li>
                 </ul>
             </div>
 
@@ -401,7 +465,8 @@
 
             <div class="jp-offcanvas-footer">
                 <div class="copyright">
-                    <p>&copy; <span class="jp-year">{{ date('Y') }}</span> Jalin Pertambangan. All Rights Reserved.</p>
+                    <p>&copy; <span class="jp-year">{{ date('Y') }}</span> Jalin Pertambangan. All Rights
+                        Reserved.</p>
                 </div>
             </div>
         </div>

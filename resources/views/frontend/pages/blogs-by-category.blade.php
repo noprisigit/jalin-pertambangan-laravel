@@ -1,6 +1,6 @@
 @extends('frontend.app')
 
-@section('title', __('Artikel & Pembelajaran'))
+@section('title', $category->name)
 
 @push('css')
     <style>
@@ -871,8 +871,9 @@
         <div class="container">
             <div class="content-part text-center pt-160 pb-160">
                 <h1 class="breadcrumbs-title white-color mb-0">Blog & Artikel</h1>
-                <p class="breadcrumbs-desc white-color mt-3 mb-0">Insight terbaru tentang industri pertambangan, tata kelola,
-                    dan pengembangan SDM</p>
+                <p class="breadcrumbs-desc white-color mt-3 mb-0">
+                    {{ __('Kategori') }} : {{ $category->name }}
+                </p>
             </div>
         </div>
     </div>
@@ -911,7 +912,8 @@
                                     @if ($post->category)
                                         <li>
                                             <i class="fa fa-book"></i>
-                                            <a href="{{ route('landing.blogs.categories', ['slug' => Str::slug($post->category->name)]) }}">{{ $post->category->name }}</a>
+                                            <a
+                                                href="{{ route('landing.blogs.categories', ['slug' => Str::slug($post->category->name)]) }}">{{ $post->category->name }}</a>
                                         </li>
                                     @endif
                                 </ul>
@@ -932,7 +934,8 @@
                         <!-- Search Widget -->
                         <div class="sidebar-search sidebar-grid shadow mb-50">
                             <form class="search-bar" method="GET" action="{{ route('landing.blogs') }}">
-                                <input type="text" placeholder="Cari..." name="q" value="{{ request()->get('q', '') }}">
+                                <input type="text" placeholder="Cari..." name="q"
+                                    value="{{ request()->get('q', '') }}">
                                 <span>
                                     <button type="submit"><i class="flaticon-search"></i></button>
                                 </span>

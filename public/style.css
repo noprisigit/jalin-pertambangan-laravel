@@ -53,7 +53,7 @@
 36. Checkout Section CSS
 37. My account Section CSS
 38. Footer CSS
-39. Error 404 CSS 
+39. Error 404 CSS
 40. Scroll Up CSS
 41. Header Cart Modal Css
 42. Preloader Css
@@ -7033,6 +7033,9 @@ body .modal-backdrop {
 }
 .rs-breadcrumbs.bg-2 {
   background-image: url(assets/images/breadcrumbs/2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 .rs-breadcrumbs.bg-3 {
   background-image: url(assets/images/breadcrumbs/3.jpg);
@@ -16424,7 +16427,7 @@ body .modal-backdrop {
   background-repeat: no-repeat;
 }
 /*---------------------------------------
-    39. Error 404 CSS 
+    39. Error 404 CSS
 ---------------------------------------*/
 .rs-page-error {
   height: 100vh;

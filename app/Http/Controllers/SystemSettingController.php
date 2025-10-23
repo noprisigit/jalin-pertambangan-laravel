@@ -57,13 +57,14 @@ class SystemSettingController extends Controller
     public function storeSocialMedia(Request $request)
     {
         $validated = $request->validate([
+            'linkedin' => ['nullable', 'url'],
             'facebook' => ['nullable', 'url'],
             'instagram' => ['nullable', 'url'],
             'twitter' => ['nullable', 'url'],
             'tiktok' => ['nullable', 'url'],
             'youtube' => ['nullable', 'url'],
         ], [], [
-            'website' => __('Website'),
+            'linkedin' => __('Linkedin'),
             'facebook' => __('Facebook'),
             'instagram' => __('Instagram'),
             'twitter' => __('Twitter'),
@@ -76,6 +77,10 @@ class SystemSettingController extends Controller
 
             if (isset($validated['website'])) {
                 setStaticContent(key: 'website', content: $validated['website']);
+            }
+
+            if (isset($validated['linkedin'])) {
+                setStaticContent(key: 'linkedin', content: $validated['linkedin']);
             }
 
             if (isset($validated['facebook'])) {

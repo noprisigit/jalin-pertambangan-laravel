@@ -71,6 +71,19 @@
             --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
 
+        .full-width-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: var(--transition-normal);
+        }
+
         /* ===== MODERN PRODUCTS STYLING ===== */
         .jp-products-section {
             position: relative;
@@ -542,7 +555,6 @@
 @endpush
 
 @section('content')
-    <hr style="margin-top: 80px;">
     <!-- Breadcrumbs Section Start -->
     <div class="rs-breadcrumbs bg-2 jp-breadcrumbs">
         <div class="container">
@@ -589,10 +601,10 @@
             <div class="jp-filter-section">
                 <!-- Search Form -->
                 <form method="GET" action="{{ route('landing.products') }}" class="jp-search-form">
-                    <input type="text" 
-                           name="search" 
-                           value="{{ request('search') }}" 
-                           placeholder="Cari produk..." 
+                    <input type="text"
+                           name="search"
+                           value="{{ request('search') }}"
+                           placeholder="Cari produk..."
                            class="jp-search-input">
                     <button type="submit" class="jp-search-btn">Cari</button>
                     @if(request('search'))
@@ -602,12 +614,12 @@
 
                 <!-- Category Filter -->
                 <div class="jp-category-filter">
-                    <a href="{{ route('landing.products') }}" 
+                    <a href="{{ route('landing.products') }}"
                        class="jp-category-btn {{ request()->get('category') ? '' : 'active' }}">
                         Semua Produk
                     </a>
                     @foreach($categories as $category)
-                        <a href="{{ route('landing.products', ['category' => $category->id]) }}" 
+                        <a href="{{ route('landing.products', ['category' => $category->id]) }}"
                            class="jp-category-btn {{ request()->get('category') == $category->id ? 'active' : '' }}">
                             {{ $category->name }} ({{ $category->products_count }})
                         </a>
@@ -655,7 +667,7 @@
                                 <div class="desc jp-product-description">
                                     {{ Str::limit(strip_tags($product->description), 120) }}
                                 </div>
-                                
+
                                 <div class="jp-product-meta">
                                     <span><i class="fa fa-calendar"></i> {{ $product->created_at->format('d M Y') }}</span>
                                     @if($product->creator)
@@ -668,7 +680,7 @@
                                         Rp {{ number_format($product->price, 0, ',', '.') }}
                                     </div>
                                 @endif
-                                
+
                                 <a href="{{ route('landing.product.detail', $product->slug) }}" class="jp-product-btn">Lihat Detail</a>
                             </div>
                         </div>
@@ -701,7 +713,7 @@
                 <div class="sub-title modify white jp-cta-subtitle">Butuh produk khusus?</div>
                 <h2 class="title3 white-color jp-cta-title">Tim ahli kami siap membantu <br> mewujudkan kebutuhan produk Anda.</h2>
                 <div class="btn-part">
-                    <a class="readon banner-style jp-cta-btn" href="#rs-contact">Hubungi Kami</a>
+                    <a class="readon banner-style jp-cta-btn" href="{{ route('landing.home') }}#rs-contact">Hubungi Kami</a>
                 </div>
             </div>
         </div>

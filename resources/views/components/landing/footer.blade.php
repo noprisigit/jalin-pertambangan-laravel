@@ -68,12 +68,14 @@
                         @foreach ($posts as $post)
                             <div class="post-wrap mb-15">
                                 <div class="post-img">
-                                    <a href="blog-single.html">
+                                    <a href="{{ route('landing.blogs.detail', ['slug' => $post->slug]) }}">
                                         <img src="{{ $post->thumbnail_url }}" alt="{{ $post->title }}">
                                     </a>
                                 </div>
                                 <div class="post-desc">
-                                    <a href="blog-single.html">{{ $post->title }}</a>
+                                    <a href="{{ route('landing.blogs.detail', ['slug' => $post->slug]) }}">
+                                        {{ $post->title }}
+                                    </a>
                                     <div class="date-post">
                                         <i class="fa fa-calendar"></i>
                                         {{ $post->created_at->translatedFormat('F d, Y') }}

@@ -5,7 +5,9 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="logo-area">
-                        <a href="index.html"><img src="assets/logo_bg.png" alt="logo"></a>
+                        <a href="">
+                            <img src="{{ asset('assets/logo_bg.png') }}" alt="logo">
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-9 text-right">
@@ -17,13 +19,37 @@
                             <nav class="rs-menu pr-0">
                                 <!-- NAVBAR disederhanakan untuk one-page -->
                                 <ul class="nav-menu">
-                                    <li><a class="jp-scroll" href="{{ route('landing.home') }}">Home</a></li>
-                                    <li><a class="jp-scroll" href="{{ route('landing.blogs') }}">News</a></li>
-                                    <li><a class="jp-scroll" href="{{ route('landing.about') }}">About Us</a></li>
-                                    <li><a class="jp-scroll" href="#our-expert">Our Expert</a></li>
-                                    <li><a class="jp-scroll" href="{{ route('landing.services') }}">Our Services</a></li>
-                                    <li><a class="jp-scroll" href="{{ route('landing.products') }}">Our Products</a></li>
-                                    
+                                    <li class="@if (Request::is('/')) active @endif">
+                                        <a class="jp-scroll" href="{{ route('landing.home') }}">
+                                            {{ __('Home') }}
+                                        </a>
+                                    </li>
+                                    <li class="@if (Request::is('blogs*')) active @endif">
+                                        <a class="jp-scroll" href="{{ route('landing.blogs') }}">
+                                            {{ __('News') }}
+                                        </a>
+                                    </li>
+                                    <li class="@if (Request::is('about*')) active @endif">
+                                        <a class="jp-scroll" href="{{ route('landing.about') }}">
+                                            {{ __('About Us') }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="jp-scroll" href="{{ route('landing.home') }}#our-expert">
+                                            {{ __('Our Expert') }}
+                                        </a>
+                                    </li>
+                                    <li class="@if (Request::is('services*')) active @endif">
+                                        <a class="jp-scroll" href="{{ route('landing.services') }}">
+                                            {{ __('Our Services') }}
+                                        </a>
+                                    </li>
+                                    <li class="@if (Request::is('products*')) active @endif">
+                                        <a class="jp-scroll" href="{{ route('landing.products') }}">
+                                            {{ __('Our Products') }}
+                                        </a>
+                                    </li>
+
                                     <!-- <li class="menu-item-has-children">
                                         <a class="jp-scroll" href="#our-services">Our Services</a>
                                         <ul class="sub-menu">
@@ -33,7 +59,11 @@
                                             </li>
                                         </ul>
                                     </li> -->
-                                    <li><a class="jp-scroll" href="#rs-contact">Contact</a></li>
+                                    <li>
+                                        <a class="jp-scroll" href="{{ route('landing.home') }}#rs-contact">
+                                            {{ __('Contact') }}
+                                        </a>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>

@@ -1,6 +1,6 @@
 @extends('frontend.app')
 
-@section('title', __('Artikel & Pembelajaran'))
+@section('title', $post->title)
 
 @push('css')
     <style>
@@ -101,14 +101,15 @@
         }
 
         /* ===== BREADCRUMBS SECTION ===== */
-        .rs-breadcrumbs.bg-8 {
+        .rs-breadcrumbs.bg-1 {
             background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
             position: relative;
             overflow: hidden;
             margin-top: 80px;
+            padding: 120px 0 80px;
         }
 
-        .rs-breadcrumbs.bg-8::before {
+        .rs-breadcrumbs.bg-1::before {
             content: '';
             position: absolute;
             top: 0;
@@ -580,7 +581,7 @@
 
         /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 991.98px) {
-            .rs-breadcrumbs.bg-8 {
+            .rs-breadcrumbs.bg-1 {
                 margin-top: 70px;
             }
 
@@ -591,7 +592,7 @@
         }
 
         @media (max-width: 768px) {
-            .rs-breadcrumbs.bg-8 {
+            .rs-breadcrumbs.bg-1 {
                 padding: 80px 0;
             }
 
@@ -628,7 +629,7 @@
         }
 
         @media (max-width: 576px) {
-            .rs-breadcrumbs.bg-8 {
+            .rs-breadcrumbs.bg-1 {
                 padding: 60px 0;
             }
 
@@ -866,89 +867,93 @@
 @endpush
 
 @section('content')
-    <!-- Breadcrumbs Section Start -->
-    <div class="rs-breadcrumbs bg-8">
+    <div class="rs-breadcrumbs bg-1">
         <div class="container">
-            <div class="content-part text-center pt-160 pb-160">
-                <h1 class="breadcrumbs-title white-color mb-0">Blog & Artikel</h1>
-                <p class="breadcrumbs-desc white-color mt-3 mb-0">Insight terbaru tentang industri pertambangan, tata kelola,
-                    dan pengembangan SDM</p>
+            <div class="content-part text-center">
+                <h1 class="breadcrumbs-title white-color mb-0">{{ $post->title }}</h1>
             </div>
         </div>
     </div>
-    <!-- Breadcrumbs Section End -->
 
     <!-- Blog Section Start -->
-    <div class="rs-blog inner pt-100 pb-100 md-pt-80 md-pb-80">
+    <div class="rs-blog inner single pt-100 pb-100 md-pt-80 md-pb-80">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
+                    <div class="blog-part">
+                        <div class="blog-img">
+                            <a href="javascript:void">
+                                <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                        <div class="article-content shadow mb-60">
+                            <ul class="blog-meta mb-22">
+                                <li>
+                                    <i class="fas fa-calendar-check"></i>
+                                    {{ \Carbon\Carbon::parse($post->created_at)->format('F j, Y') }}
+                                </li>
 
-                    <!-- Blog Post 1 -->
-                    @foreach ($posts as $post)
-                        <div class="blog-wrap shadow mb-70 xs-mb-50">
-                            <div class="image-part">
-                                <a href="{{ route('landing.blogs.detail', ['slug' => $post->slug]) }}">
-                                    <img src="{{ $post->thumbnail_url }}" alt="{{ $post->title }}">
-                                </a>
-                            </div>
-                            <div class="content-part">
-                                <h3 class="title mb-10">
-                                    <a href="{{ route('landing.blogs.detail', ['slug' => $post->slug]) }}">
-                                        {{ $post->title }}
-                                    </a>
-                                </h3>
-                                <ul class="blog-meta mb-22">
-                                    <li>
-                                        <i class="fas fa-calendar-check"></i>
-                                        {{ $post->created_at->isoFormat('D MMMM Y') }}
-                                    </li>
+                                @if ($post->user)
                                     <li>
                                         <i class="fas fa-user"></i>
                                         {{ $post->user?->name }}
                                     </li>
+                                @endif
 
-                                    @if ($post->category)
-                                        <li>
-                                            <i class="fa fa-book"></i>
-                                            <a href="{{ route('landing.blogs.categories', ['slug' => Str::slug($post->category->name)]) }}">{{ $post->category->name }}</a>
-                                        </li>
-                                    @endif
-                                </ul>
-                                <p class="desc mb-20">{{ $post->excerpt }}</p>
-                                <div class="btn-part">
-                                    <a class="readon-arrow"
-                                        href="{{ route('landing.blogs.detail', ['slug' => $post->slug]) }}">Baca
-                                        Selengkapnya</a>
-                                </div>
-                            </div>
+                                @if ($post->category)
+                                    <li>
+                                        <i class="fas fa-book"></i>
+                                        <a href="#">{{ $post->category?->name }}</a>
+                                    </li>
+                                @endif
+
+                                <li>
+                                    <i class="fas fa-eye"></i>
+                                    {{ $post->read_by }}
+                                </li>
+                            </ul>
+
+                            {!! $post->content !!}
                         </div>
-                    @endforeach
+
+                        @if ($nextPost)
+                            <div class="article-nav">
+                                <ul>
+                                    <li class="next">
+                                        <a href="{{ route('landing.blogs.detail', ['slug' => $nextPost->slug]) }}">
+                                            <span class="next-link">{{ __('Selanjutnya') }} <i
+                                                    class="flaticon-next"></i></span>
+                                            <span class="link-text">{{ $nextPost->title }}</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                        @endif
+                    </div>
                 </div>
 
                 <div class="col-lg-4 md-mb-50 pl-35 lg-pl-15 md-order-first">
                     <div id="sticky-sidebar" class="blog-sidebar">
-
-                        <!-- Search Widget -->
                         <div class="sidebar-search sidebar-grid shadow mb-50">
                             <form class="search-bar" method="GET" action="{{ route('landing.blogs') }}">
-                                <input type="text" placeholder="Cari..." name="q" value="{{ request()->get('q', '') }}">
+                                <input type="text" placeholder="{{ __('Cari') }}..." name="q"
+                                    value="{{ request()->get('q', '') }}">
                                 <span>
                                     <button type="submit"><i class="flaticon-search"></i></button>
                                 </span>
                             </form>
                         </div>
 
-                        <!-- Recent Posts Widget -->
                         <div class="sidebar-popular-post sidebar-grid shadow mb-50">
                             <div class="sidebar-title">
-                                <h3 class="title semi-bold mb-20">{{ __('Postingan Terbaru') }}</h3>
+                                <h3 class="title mb-20">{{ __('Postingan Terbaru') }}</h3>
                             </div>
                             @foreach ($newestPosts as $post)
                                 <div class="single-post mb-20">
                                     <div class="post-image">
                                         <a href="{{ route('landing.blogs.detail', ['slug' => $post->slug]) }}">
-                                            <img src="{{ $post->thumbnail_url }}" alt="{{ $post->title }}">
+                                            <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="post image">
                                         </a>
                                     </div>
                                     <div class="post-desc">
@@ -960,33 +965,29 @@
                                             </h5>
                                         </div>
                                         <ul>
-                                            <li><i class="fas fa-calendar"></i>
-                                                {{ $post->created_at->isoFormat('D MMMM Y') }}</li>
+                                            <li><i class="fa fa-calendar"></i> 28 June, 2019</li>
                                         </ul>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
 
-                        <!-- Categories Widget -->
                         <div class="sidebar-categories sidebar-grid shadow">
                             <div class="sidebar-title">
-                                <h3 class="title semi-bold mb-20">Kategori</h3>
+                                <h3 class="title mb-20">{{ __('Kategori') }}</h3>
                             </div>
                             <ul>
                                 @foreach ($categories as $category)
                                     <li>
-                                        <a href="{{ route('landing.blogs.categories', ['slug' => Str::slug($category->name)]) }}">{{ $category->name }}</a>
+                                        <a href="#">{{ $category->name }}</a>
                                     </li>
                                 @endforeach
                             </ul>
                         </div>
-
                     </div>
                 </div>
             </div>
             <div id="sticky-end"></div>
         </div>
     </div>
-    <!-- Blog Section End -->
 @endsection

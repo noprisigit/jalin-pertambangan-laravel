@@ -146,7 +146,11 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        return view('admin.pages.post.post-show');
+        $post = Post::query()
+            ->with(['category', 'files'])
+            ->findOrFail($id);
+
+        return view('admin.pages.post.post-show', compact('post'));
     }
 
     /**

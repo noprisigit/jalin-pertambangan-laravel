@@ -26,7 +26,7 @@
         <div class="dropdown-menu {{ Request::is('admin/posts*') ? 'show' : '' }}">
             <div class="dropdown-menu-columns">
                 <div class="dropdown-menu-column">
-                    <a class="dropdown-item {{ Request::is('admin/posts') ? 'active' : '' }}"
+                    <a class="dropdown-item {{ Request::is('admin/posts*') && !Request::is('admin/posts/categories*') ? 'active' : '' }}"
                         href="{{ route('admin.posts.index') }}">
                         {{ __('Artikel') }}
                     </a>
