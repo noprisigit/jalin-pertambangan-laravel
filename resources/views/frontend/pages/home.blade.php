@@ -1856,7 +1856,7 @@
             }
         }
 
-    /* Tambahkan ke file CSS atau di dalam <style> tag */
+        /* Tambahkan ke file CSS atau di dalam <style> tag */
         .single-expert {
             max-width: 400px;
             margin: 0 auto;
@@ -1960,15 +1960,15 @@
                 max-width: 100%;
                 margin: 0 15px;
             }
-            
+
             .single-expert .team-image {
                 height: 250px;
             }
-            
+
             .single-expert .text-bottom {
                 padding: 25px 20px;
             }
-            
+
             .single-expert .person-name {
                 font-size: 20px;
             }
@@ -2018,7 +2018,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="illobox d-flex align-items-center justify-content-center">
-                                    <img src="assets/images/bahan/bahan3.jpg" alt="Mining Strategy Map"
+                                    <img src="{{ asset('assets/images/bahan/bahan3.jpg') }}" alt="Mining Strategy Map"
                                         class="img-fluid rounded">
                                 </div>
                             </div>
@@ -2053,8 +2053,8 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="illobox d-flex align-items-center justify-content-center">
-                                    <img src="assets/images/bahan/bahan2.jpg" alt="Tata Kelola & Produktivitas"
-                                        class="img-fluid rounded">
+                                    <img src="{{ asset('assets/images/bahan/bahan2.jpg') }}"
+                                        alt="Tata Kelola & Produktivitas" class="img-fluid rounded">
                                 </div>
                             </div>
                         </div>
@@ -2088,7 +2088,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="illobox d-flex align-items-center justify-content-center">
-                                    <img src="assets/images/bahan/bahan5.jpg" alt="Mining Strategy Map"
+                                    <img src="{{ asset('assets/images/bahan/bahan5.jpg') }}" alt="Mining Strategy Map"
                                         class="img-fluid rounded">
                                 </div>
                             </div>
@@ -2136,7 +2136,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="illobox d-flex align-items-center justify-content-center">
-                                    <img src="assets/images/bahan/bahan6.jpg" alt="Mining Strategy Map"
+                                    <img src="{{ asset('assets/images/bahan/bahan6.jpg') }}" alt="Mining Strategy Map"
                                         class="img-fluid rounded">
                                 </div>
                             </div>
@@ -2158,7 +2158,7 @@
                                     <a href="#contact" class="btn btn-hero btn-primary-hero">
                                         <i class="bi bi-calendar-check me-2"></i>Jadwalkan Sekarang
                                     </a>
-                                    <a href="https://wa.me/6281943290320?text=Halo%20Jalin%20Pertambangan%2C%20saya%20ingin%20konsultasi."
+                                    <a href="https://wa.me/{{ getStaticContent('phone') }}?text=Halo%20Jalin%20Pertambangan%2C%20saya%20ingin%20konsultasi."
                                         target="_blank" rel="noopener" class="btn btn-hero btn-outline-hero">
                                         <i class="bi bi-whatsapp me-2"></i>WhatsApp JP
                                     </a>
@@ -2194,16 +2194,16 @@
 
     <!-- Hapus rs-slider yang lama -->
     <!--
-                                                                                                            <div id="rs-slider" class="rs-slider slider1">
-                                                                                                              <div class="bend niceties">
-                                                                                                                <div id="nivoSlider" class="slides">
-                                                                                                                  <img src="assets/images/bahan/bahan1.jpg" alt="JP Hero" title="#slide-1" />
-                                                                                                                  <img src="assets/images/bahan/bahan2.jpg" alt="JP Hero 2" title="#slide-2" />
-                                                                                                                </div>
-                                                                                                                ...
-                                                                                                                      </div>
-                                                                                                                      </div>
-                                                                                                            -->
+                                                                                                                <div id="rs-slider" class="rs-slider slider1">
+                                                                                                                  <div class="bend niceties">
+                                                                                                                    <div id="nivoSlider" class="slides">
+                                                                                                                      <img src="assets/images/bahan/bahan1.jpg" alt="JP Hero" title="#slide-1" />
+                                                                                                                      <img src="assets/images/bahan/bahan2.jpg" alt="JP Hero 2" title="#slide-2" />
+                                                                                                                    </div>
+                                                                                                                    ...
+                                                                                                                          </div>
+                                                                                                                          </div>
+                                                                                                                -->
 
     <!-- Services Mini Section Start -->
     <div class="rs-services style1 pt-100 pb-84 md-pt-80 md-pb-64">
@@ -2211,10 +2211,10 @@
             <div class="row gutter-16">
                 <div class="col-lg-3 col-sm-6 mb-16">
                     <div class="service-wrap">
-                        <div class="icon-part"><img src="assets/images/services/icons/1.png" alt="">
+                        <div class="icon-part"><img src="{{ asset('assets/images/services/icons/1.png') }}" alt="">
                         </div>
                         <div class="content-part">
-                            <h5 class="title"><a href="services-single.html">Solution Focused</a></h5>
+                            <h5 class="title"><a href="javascript:void(0)">Solution Focused</a></h5>
                             <div class="desc">Solusi praktis untuk isu eksplorasi, operasi, hingga hilir—bukan
                                 sekadar laporan.</div>
                         </div>
@@ -2222,10 +2222,10 @@
                 </div>
                 <div class="col-lg-3 col-sm-6 mb-16">
                     <div class="service-wrap">
-                        <div class="icon-part"><img src="assets/images/services/icons/2.png" alt="">
+                        <div class="icon-part"><img src="{{ asset('assets/images/services/icons/2.png') }}" alt="">
                         </div>
                         <div class="content-part">
-                            <h5 class="title"><a href="services-single.html">Client Oriented</a></h5>
+                            <h5 class="title"><a href="javascript:void(0)">Client Oriented</a></h5>
                             <div class="desc">Pendekatan fleksibel: diskusi, coaching, workshop, dan pendampingan
                                 onsite/online.</div>
                         </div>
@@ -2233,10 +2233,10 @@
                 </div>
                 <div class="col-lg-3 col-sm-6 mb-16">
                     <div class="service-wrap">
-                        <div class="icon-part"><img src="assets/images/services/icons/3.png" alt="">
+                        <div class="icon-part"><img src="{{ asset('assets/images/services/icons/3.png') }}" alt="">
                         </div>
                         <div class="content-part">
-                            <h5 class="title"><a href="services-single.html">Best Practice</a></h5>
+                            <h5 class="title"><a href="javascript:void(0)">Best Practice</a></h5>
                             <div class="desc">Mengacu CIP/PI, K3L, serta praktik global untuk operasi tambang
                                 berkelanjutan.</div>
                         </div>
@@ -2244,10 +2244,10 @@
                 </div>
                 <div class="col-lg-3 col-sm-6 mb-16">
                     <div class="service-wrap">
-                        <div class="icon-part"><img src="assets/images/services/icons/4.png" alt="">
+                        <div class="icon-part"><img src="{{ asset('assets/images/services/icons/4.png') }}" alt="">
                         </div>
                         <div class="content-part">
-                            <h5 class="title"><a href="services-single.html">Decision Maker</a></h5>
+                            <h5 class="title"><a href="javascript:void(0)">Decision Maker</a></h5>
                             <div class="desc">Mendukung manajemen dalam pengambilan keputusan berbasis data &
                                 risiko.</div>
                         </div>
@@ -2265,7 +2265,7 @@
         <div class="container">
             <div class="row y-bottom">
                 <div class="col-lg-6 md-mb-50">
-                    <div class="images-part"><img src="assets/images/bahan/bahan10.jpg" alt="about jp"></div>
+                    <div class="images-part"><img src="{{ asset('assets/images/bahan/bahan10.jpg') }}" alt="about jp"></div>
                 </div>
                 <div class="col-lg-6 pl-66 pt-75 pb-75 md-pt-42 md-pb-72">
                     <div class="sec-title mb-47 md-mb-42">
@@ -2274,7 +2274,7 @@
                         </h2>
                     </div>
                     <div class="services-part mb-30">
-                        <div class="services-icon"><img src="assets/images/about/icons/1.png" alt="image">
+                        <div class="services-icon"><img src="{{ asset('assets/images/about/icons/1.png') }}" alt="image">
                         </div>
                         <div class="services-text">
                             <h4 class="title">Pendekatan Menyeluruh</h4>
@@ -2285,7 +2285,7 @@
                         </div>
                     </div>
                     <div class="services-part mb-30">
-                        <div class="services-icon"><img src="assets/images/about/icons/2.png" alt="image">
+                        <div class="services-icon"><img src="{{ asset('assets/images/about/icons/2.png') }}" alt="image">
                         </div>
                         <div class="services-text">
                             <h4 class="title">Dipimpin Ahli Industri</h4>
@@ -2299,7 +2299,7 @@
                             <li><a class="readon2 get-new" href="#rs-services">Lihat Layanan</a></li>
                             <li>
                                 <div class="video-btn seo-agency text-center">
-                                    <a class="popup-videos" href="assets/images/bahan/video_1.mp4"><i
+                                    <a class="popup-videos" href="{{ asset('assets/images/bahan/video_1.mp4') }}"><i
                                             class="fa fa-play"></i></a>
                                 </div>
                             </li>
@@ -2388,7 +2388,7 @@
                 </div>
                 <div class="col-lg-7 pl-70 md-pl-15">
                     <div class="images-part">
-                        <img src="assets/images/bahan/bahan.jpg" alt="Strategy & Execution">
+                        <img src="{{ asset('assets/images/bahan/bahan.jpg') }}" alt="Strategy & Execution">
                     </div>
                     <div class="rs-animations">
                         <div class="shape-icons one"></div>
@@ -2412,59 +2412,59 @@
             data-ipad-device-nav2="false" data-ipad-device-dots2="false" data-md-device="3" data-lg-device="4"
             data-md-device-nav="false" data-md-device-dots="true">
             <div class="portfolio-item">
-                <div class="img-part"><img src="assets/images/bahan/bahan1.jpg" alt=""></div>
+                <div class="img-part"><img src="{{ asset('assets/images/bahan/bahan1.jpg') }}" alt=""></div>
                 <div class="content-part">
-                    <a class="categories" href="portfolio-gallery.html">Operasi</a>
-                    <h4 class="title"><a href="portfolio-gallery.html">Optimasi Produksi Timah Darat</a></h4>
+                    <a class="categories" href="javascript:void(0)">Operasi</a>
+                    <h4 class="title"><a href="javascript:void(0)">Optimasi Produksi Timah Darat</a></h4>
                 </div>
             </div>
             <div class="portfolio-item">
-                <div class="img-part"><img src="assets/images/bahan/bahan2.jpg" alt=""></div>
+                <div class="img-part"><img src="{{ asset('assets/images/bahan/bahan2.jpg') }}" alt=""></div>
                 <div class="content-part">
-                    <a class="categories" href="portfolio-gallery.html">Eksplorasi</a>
-                    <h4 class="title"><a href="portfolio-gallery.html">Evaluasi Prospek Emas-Tembaga</a></h4>
+                    <a class="categories" href="javascript:void(0)">Eksplorasi</a>
+                    <h4 class="title"><a href="javascript:void(0)">Evaluasi Prospek Emas-Tembaga</a></h4>
                 </div>
             </div>
             <div class="portfolio-item">
-                <div class="img-part"><img src="assets/images/bahan/bahan3.jpg" alt=""></div>
+                <div class="img-part"><img src="{{ asset('assets/images/bahan/bahan3.jpg') }}" alt=""></div>
                 <div class="content-part">
-                    <a class="categories" href="portfolio-gallery.html">Governance</a>
-                    <h4 class="title"><a href="portfolio-gallery.html">Review SOP & Kepatuhan PKB</a></h4>
+                    <a class="categories" href="javascript:void(0)">Governance</a>
+                    <h4 class="title"><a href="javascript:void(0)">Review SOP & Kepatuhan PKB</a></h4>
                 </div>
             </div>
             <div class="portfolio-item">
-                <div class="img-part"><img src="assets/images/bahan/bahan.jpg" alt=""></div>
+                <div class="img-part"><img src="{{ asset('assets/images/bahan/bahan.jpg') }}" alt=""></div>
                 <div class="content-part">
-                    <a class="categories" href="portfolio-gallery.html">K3L</a>
-                    <h4 class="title"><a href="portfolio-gallery.html">Program Peningkatan Keselamatan</a></h4>
+                    <a class="categories" href="javascript:void(0)">K3L</a>
+                    <h4 class="title"><a href="javascript:void(0)">Program Peningkatan Keselamatan</a></h4>
                 </div>
             </div>
             <div class="portfolio-item">
-                <div class="img-part"><img src="assets/images/bahan/bahan5.jpg" alt=""></div>
+                <div class="img-part"><img src="{{ asset('assets/images/bahan/bahan5.jpg') }}" alt=""></div>
                 <div class="content-part">
-                    <a class="categories" href="portfolio-gallery.html">Transformasi</a>
-                    <h4 class="title"><a href="portfolio-gallery.html">Kantor Transformasi Korporat</a></h4>
+                    <a class="categories" href="javascript:void(0)">Transformasi</a>
+                    <h4 class="title"><a href="javascript:void(0)">Kantor Transformasi Korporat</a></h4>
                 </div>
             </div>
             <div class="portfolio-item">
-                <div class="img-part"><img src="assets/images/bahan/bahan6.jpg" alt=""></div>
+                <div class="img-part"><img src="{{ asset('assets/images/bahan/bahan6.jpg') }}" alt=""></div>
                 <div class="content-part">
-                    <a class="categories" href="portfolio-gallery.html">Rantai Pasok</a>
-                    <h4 class="title"><a href="portfolio-gallery.html">Pit-to-Port Optimization</a></h4>
+                    <a class="categories" href="javascript:void(0)">Rantai Pasok</a>
+                    <h4 class="title"><a href="javascript:void(0)">Pit-to-Port Optimization</a></h4>
                 </div>
             </div>
             <div class="portfolio-item">
-                <div class="img-part"><img src="assets/images/bahan/bahan7.jpg" alt=""></div>
+                <div class="img-part"><img src="{{ asset('assets/images/bahan/bahan7.jpg') }}" alt=""></div>
                 <div class="content-part">
-                    <a class="categories" href="portfolio-gallery.html">Pelatihan</a>
-                    <h4 class="title"><a href="portfolio-gallery.html">Workshop Manajemen Tambang</a></h4>
+                    <a class="categories" href="javascript:void(0)">Pelatihan</a>
+                    <h4 class="title"><a href="javascript:void(0)">Workshop Manajemen Tambang</a></h4>
                 </div>
             </div>
             <div class="portfolio-item">
-                <div class="img-part"><img src="assets/images/bahan/bahan8.jpg" alt=""></div>
+                <div class="img-part"><img src="{{ asset('assets/images/bahan/bahan8.jpg') }}" alt=""></div>
                 <div class="content-part">
-                    <a class="categories" href="portfolio-gallery.html">Studi</a>
-                    <h4 class="title"><a href="portfolio-gallery.html">Estimasi Cadangan (CPI)</a></h4>
+                    <a class="categories" href="javascript:void(0)">Studi</a>
+                    <h4 class="title"><a href="javascript:void(0)">Estimasi Cadangan (CPI)</a></h4>
                 </div>
             </div>
         </div>
@@ -2509,64 +2509,64 @@
 
     <!-- Testimonial Section Start (ringkas & relevan) -->s
     <!-- <div class="rs-testimonial style11 gray-bg pt-92 md-pt-72">
-        <div class="container">
-            <div class="sec-title3 text-center mb-40">
-                <span class="sub-title">~ <span class="title-upper">Testimoni</span> ~</span>
-                <h2 class="title">Apa Kata Klien</h2>
-            </div>
-            <div class="testi-main-part bg32">
-                <div class="slick-part single-product-slider">
-                    <div class="slider slider-for">
-                        <div class="images-slide-single">
-                            <div class="single-testimonial">
-                                <div class="content-part"><img class="quote"
-                                        src="assets/images/testimonial/qoute-icon2.png" alt="">
-                                    <p>"Pendampingan JP membantu kami menaikkan output sambil merapikan SOP & K3L."
-                                    </p>
+            <div class="container">
+                <div class="sec-title3 text-center mb-40">
+                    <span class="sub-title">~ <span class="title-upper">Testimoni</span> ~</span>
+                    <h2 class="title">Apa Kata Klien</h2>
+                </div>
+                <div class="testi-main-part bg32">
+                    <div class="slick-part single-product-slider">
+                        <div class="slider slider-for">
+                            <div class="images-slide-single">
+                                <div class="single-testimonial">
+                                    <div class="content-part"><img class="quote"
+                                            src="assets/images/testimonial/qoute-icon2.png" alt="">
+                                        <p>"Pendampingan JP membantu kami menaikkan output sambil merapikan SOP & K3L."
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="images-slide-single">
+                                <div class="single-testimonial">
+                                    <div class="content-part"><img class="quote"
+                                            src="assets/images/testimonial/qoute-icon2.png" alt="">
+                                        <p>"Workshop PPC sangat aplikatif—target produksi bulanan menjadi lebih
+                                            konsisten."</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="images-slide-single">
+                                <div class="single-testimonial">
+                                    <div class="content-part"><img class="quote"
+                                            src="assets/images/testimonial/qoute-icon2.png" alt="">
+                                        <p>"Insight governance JP memperkaya mitigasi risiko hukum & hubungan
+                                            industrial."</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="images-slide-single">
-                            <div class="single-testimonial">
-                                <div class="content-part"><img class="quote"
-                                        src="assets/images/testimonial/qoute-icon2.png" alt="">
-                                    <p>"Workshop PPC sangat aplikatif—target produksi bulanan menjadi lebih
-                                        konsisten."</p>
+                        <div class="slider slider-nav">
+                            <div class="images-single"><img src="assets/images/testimonial/avatar/1.jpg" alt="">
+                                <div class="testi-content">
+                                    <div class="testi-name">Manager Operasi</div><span class="testi-title">Timah</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="images-slide-single">
-                            <div class="single-testimonial">
-                                <div class="content-part"><img class="quote"
-                                        src="assets/images/testimonial/qoute-icon2.png" alt="">
-                                    <p>"Insight governance JP memperkaya mitigasi risiko hukum & hubungan
-                                        industrial."</p>
+                            <div class="images-single"><img src="assets/images/testimonial/avatar/2.jpg" alt="">
+                                <div class="testi-content">
+                                    <div class="testi-name">Head of Mining</div><span class="testi-title">Au-Cu</span>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="slider slider-nav">
-                        <div class="images-single"><img src="assets/images/testimonial/avatar/1.jpg" alt="">
-                            <div class="testi-content">
-                                <div class="testi-name">Manager Operasi</div><span class="testi-title">Timah</span>
-                            </div>
-                        </div>
-                        <div class="images-single"><img src="assets/images/testimonial/avatar/2.jpg" alt="">
-                            <div class="testi-content">
-                                <div class="testi-name">Head of Mining</div><span class="testi-title">Au-Cu</span>
-                            </div>
-                        </div>
-                        <div class="images-single"><img src="assets/images/testimonial/avatar/3.jpg" alt="">
-                            <div class="testi-content">
-                                <div class="testi-name">Direktur</div><span class="testi-title">Holding
-                                    Minerba</span>
+                            <div class="images-single"><img src="assets/images/testimonial/avatar/3.jpg" alt="">
+                                <div class="testi-content">
+                                    <div class="testi-name">Direktur</div><span class="testi-title">Holding
+                                        Minerba</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div> -->
+        </div> -->
 
     <!-- Testimonial Section End -->
 
@@ -2577,15 +2577,15 @@
                 data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800" data-dots="false"
                 data-nav="false" data-center-mode="false" data-mobile-device="2" data-ipad-device="3"
                 data-ipad-device2="2" data-md-device="4">
-                <div class="partner-item"><a href="#"><img src="assets/images/partner/1.png" alt=""></a>
+                <div class="partner-item"><a href="#"><img src="{{ asset('assets/images/partner/1.png') }}" alt=""></a>
                 </div>
-                <div class="partner-item"><a href="#"><img src="assets/images/partner/2.png" alt=""></a>
+                <div class="partner-item"><a href="#"><img src="{{ asset('assets/images/partner/2.png') }}" alt=""></a>
                 </div>
-                <div class="partner-item"><a href="#"><img src="assets/images/partner/3.png" alt=""></a>
+                <div class="partner-item"><a href="#"><img src="{{ asset('assets/images/partner/3.png') }}" alt=""></a>
                 </div>
-                <div class="partner-item"><a href="#"><img src="assets/images/partner/4.png" alt=""></a>
+                <div class="partner-item"><a href="#"><img src="{{ asset('assets/images/partner/4.png') }}" alt=""></a>
                 </div>
-                <div class="partner-item"><a href="#"><img src="assets/images/partner/5.png" alt=""></a>
+                <div class="partner-item"><a href="#"><img src="{{ asset('assets/images/partner/5.png') }}" alt=""></a>
                 </div>
             </div>
         </div>
@@ -2601,13 +2601,13 @@
                 <div class="desc">Dipimpin oleh Dr. Ir. Ichwan Azwardi S.T., M.T., IPU — CPI (PERHAPI), IPU
                     (PII), pengalaman eksekutif & kebijakan minerba.</div>
             </div>
-            
+
             <!-- Solusi: Gunakan grid layout untuk single item -->
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-8 col-sm-10">
                     <div class="team-wrap single-expert">
                         <div class="team-image">
-                            <img src="assets/images/bahan/pp.jpg" alt="Team Image" class="img-fluid">
+                            <img src="{{ asset('assets/images/bahan/pp.jpg') }}" alt="Team Image" class="img-fluid">
                         </div>
                         <div class="text-bottom">
                             <h4 class="person-name">
@@ -2616,11 +2616,13 @@
                             <span class="designation">Founder & CEO</span>
                             <div class="expert-info mt-3">
                                 <p class="mb-2"><strong>Spesialisasi:</strong> Kebijakan Minerba & Eksekutif</p>
-                                <p class="mb-2"><strong>Kualifikasi:</strong> S.T., M.T., IPU — CPI (PERHAPI), IPU (PII)</p>
+                                <p class="mb-2"><strong>Kualifikasi:</strong> S.T., M.T., IPU — CPI (PERHAPI), IPU (PII)
+                                </p>
                                 <div class="social-links mt-3">
                                     <ul class="list-inline">
                                         <li class="list-inline-item">
-                                            <a href="mailto:jalinpertambangan@gmail.com" class="social-link"><i class="fa fa-envelope"></i></a>
+                                            <a href="mailto:jalinpertambangan@gmail.com" class="social-link"><i
+                                                    class="fa fa-envelope"></i></a>
                                         </li>
                                     </ul>
                                 </div>
