@@ -1903,6 +1903,124 @@
                 padding: 15px;
             }
         }
+
+    /* Tambahkan ke file CSS atau di dalam <style> tag */
+        .single-expert {
+            max-width: 400px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+
+        .single-expert:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .single-expert .team-image {
+            position: relative;
+            overflow: hidden;
+            height: 300px;
+        }
+
+        .single-expert .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .single-expert:hover .team-image img {
+            transform: scale(1.05);
+        }
+
+        .single-expert .text-bottom {
+            padding: 30px 25px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+        }
+
+        .single-expert .person-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+
+        .single-expert .person-name a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .single-expert .person-name a:hover {
+            color: #106eea;
+        }
+
+        .single-expert .designation {
+            font-size: 16px;
+            color: #106eea;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .single-expert .expert-info {
+            margin-top: 20px;
+        }
+
+        .single-expert .expert-info p {
+            font-size: 14px;
+            color: #6c757d;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .single-expert .social-links {
+            margin-top: 20px;
+        }
+
+        .single-expert .social-links .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #106eea;
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .single-expert .social-links .social-link:hover {
+            background: #0d5bb8;
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .single-expert {
+                max-width: 100%;
+                margin: 0 15px;
+            }
+            
+            .single-expert .team-image {
+                height: 250px;
+            }
+            
+            .single-expert .text-bottom {
+                padding: 25px 20px;
+            }
+            
+            .single-expert .person-name {
+                font-size: 20px;
+            }
+        }
     </style>
 @endpush
 
@@ -1945,7 +2063,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="illobox d-flex align-items-center justify-content-center">
-                                    <img src="assets/images/bahan/bahan1.jpg" alt="Mining Strategy Map"
+                                    <img src="assets/images/bahan/bahan3.jpg" alt="Mining Strategy Map"
                                         class="img-fluid rounded">
                                 </div>
                             </div>
@@ -2015,11 +2133,8 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="illobox d-flex align-items-center justify-content-center">
-                                    <div class="text-center p-4">
-                                        <i class="bi bi-diagram-3" style="font-size:48px"></i>
-                                        <h5 class="mt-3 mb-1">Pit-to-Port Excellence</h5>
-                                        <p class="mb-0" style="opacity:.8">Mining • Processing • Logistics</p>
-                                    </div>
+                                    <img src="assets/images/bahan/bahan5.jpg" alt="Mining Strategy Map"
+                                        class="img-fluid rounded">
                                 </div>
                             </div>
                         </div>
@@ -2066,12 +2181,8 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="illobox d-flex align-items-center justify-content-center">
-                                    <div class="text-center p-4">
-                                        <i class="bi bi-magnet" style="font-size:48px"></i>
-                                        <h5 class="mt-3 mb-1">Operational Excellence</h5>
-                                        <p class="mb-0" style="opacity:.8">Exploration • Supply • Transformation
-                                        </p>
-                                    </div>
+                                    <img src="assets/images/bahan/bahan6.jpg" alt="Mining Strategy Map"
+                                        class="img-fluid rounded">
                                 </div>
                             </div>
                         </div>
@@ -2199,7 +2310,7 @@
         <div class="container">
             <div class="row y-bottom">
                 <div class="col-lg-6 md-mb-50">
-                    <div class="images-part"><img src="assets/images/bahan/bahan13.jpg" alt="about jp"></div>
+                    <div class="images-part"><img src="assets/images/bahan/bahan10.jpg" alt="about jp"></div>
                 </div>
                 <div class="col-lg-6 pl-66 pt-75 pb-75 md-pt-42 md-pb-72">
                     <div class="sec-title mb-47 md-mb-42">
@@ -2233,7 +2344,7 @@
                             <li><a class="readon2 get-new" href="#rs-services">Lihat Layanan</a></li>
                             <li>
                                 <div class="video-btn seo-agency text-center">
-                                    <a class="popup-videos" href="https://www.youtube.com/watch?v=YLN1Argi7ik"><i
+                                    <a class="popup-videos" href="assets/images/bahan/video_1.mp4"><i
                                             class="fa fa-play"></i></a>
                                 </div>
                             </li>
@@ -2322,7 +2433,7 @@
                 </div>
                 <div class="col-lg-7 pl-70 md-pl-15">
                     <div class="images-part">
-                        <img src="assets/images/bahan/bahan1.jpg" alt="Strategy & Execution">
+                        <img src="assets/images/bahan/bahan.jpg" alt="Strategy & Execution">
                     </div>
                     <div class="rs-animations">
                         <div class="shape-icons one"></div>
@@ -2346,56 +2457,56 @@
             data-ipad-device-nav2="false" data-ipad-device-dots2="false" data-md-device="3" data-lg-device="4"
             data-md-device-nav="false" data-md-device-dots="true">
             <div class="portfolio-item">
-                <div class="img-part"><img src="assets/images/casestudies/1.jpg" alt=""></div>
+                <div class="img-part"><img src="assets/images/bahan/bahan1.jpg" alt=""></div>
                 <div class="content-part">
                     <a class="categories" href="portfolio-gallery.html">Operasi</a>
                     <h4 class="title"><a href="portfolio-gallery.html">Optimasi Produksi Timah Darat</a></h4>
                 </div>
             </div>
             <div class="portfolio-item">
-                <div class="img-part"><img src="assets/images/casestudies/2.jpg" alt=""></div>
+                <div class="img-part"><img src="assets/images/bahan/bahan2.jpg" alt=""></div>
                 <div class="content-part">
                     <a class="categories" href="portfolio-gallery.html">Eksplorasi</a>
                     <h4 class="title"><a href="portfolio-gallery.html">Evaluasi Prospek Emas-Tembaga</a></h4>
                 </div>
             </div>
             <div class="portfolio-item">
-                <div class="img-part"><img src="assets/images/casestudies/3.jpg" alt=""></div>
+                <div class="img-part"><img src="assets/images/bahan/bahan3.jpg" alt=""></div>
                 <div class="content-part">
                     <a class="categories" href="portfolio-gallery.html">Governance</a>
                     <h4 class="title"><a href="portfolio-gallery.html">Review SOP & Kepatuhan PKB</a></h4>
                 </div>
             </div>
             <div class="portfolio-item">
-                <div class="img-part"><img src="assets/images/casestudies/4.jpg" alt=""></div>
+                <div class="img-part"><img src="assets/images/bahan/bahan.jpg" alt=""></div>
                 <div class="content-part">
                     <a class="categories" href="portfolio-gallery.html">K3L</a>
                     <h4 class="title"><a href="portfolio-gallery.html">Program Peningkatan Keselamatan</a></h4>
                 </div>
             </div>
             <div class="portfolio-item">
-                <div class="img-part"><img src="assets/images/casestudies/5.jpg" alt=""></div>
+                <div class="img-part"><img src="assets/images/bahan/bahan5.jpg" alt=""></div>
                 <div class="content-part">
                     <a class="categories" href="portfolio-gallery.html">Transformasi</a>
                     <h4 class="title"><a href="portfolio-gallery.html">Kantor Transformasi Korporat</a></h4>
                 </div>
             </div>
             <div class="portfolio-item">
-                <div class="img-part"><img src="assets/images/casestudies/6.jpg" alt=""></div>
+                <div class="img-part"><img src="assets/images/bahan/bahan6.jpg" alt=""></div>
                 <div class="content-part">
                     <a class="categories" href="portfolio-gallery.html">Rantai Pasok</a>
                     <h4 class="title"><a href="portfolio-gallery.html">Pit-to-Port Optimization</a></h4>
                 </div>
             </div>
             <div class="portfolio-item">
-                <div class="img-part"><img src="assets/images/casestudies/7.jpg" alt=""></div>
+                <div class="img-part"><img src="assets/images/bahan/bahan7.jpg" alt=""></div>
                 <div class="content-part">
                     <a class="categories" href="portfolio-gallery.html">Pelatihan</a>
                     <h4 class="title"><a href="portfolio-gallery.html">Workshop Manajemen Tambang</a></h4>
                 </div>
             </div>
             <div class="portfolio-item">
-                <div class="img-part"><img src="assets/images/casestudies/8.jpg" alt=""></div>
+                <div class="img-part"><img src="assets/images/bahan/bahan8.jpg" alt=""></div>
                 <div class="content-part">
                     <a class="categories" href="portfolio-gallery.html">Studi</a>
                     <h4 class="title"><a href="portfolio-gallery.html">Estimasi Cadangan (CPI)</a></h4>
@@ -2441,9 +2552,8 @@
     </div>
     <!-- Skillbar Section End -->
 
-    <!-- Testimonial Section Start (ringkas & relevan) -->
-    <hr>
-    <div class="rs-testimonial style11 gray-bg pt-92 md-pt-72">
+    <!-- Testimonial Section Start (ringkas & relevan) -->s
+    <!-- <div class="rs-testimonial style11 gray-bg pt-92 md-pt-72">
         <div class="container">
             <div class="sec-title3 text-center mb-40">
                 <span class="sub-title">~ <span class="title-upper">Testimoni</span> ~</span>
@@ -2501,7 +2611,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Testimonial Section End -->
 
@@ -2536,37 +2646,31 @@
                 <div class="desc">Dipimpin oleh Dr. Ir. Ichwan Azwardi S.T., M.T., IPU — CPI (PERHAPI), IPU
                     (PII), pengalaman eksekutif & kebijakan minerba.</div>
             </div>
-            <!-- carousel bawaan dibiarkan -->
-            <div class="rs-carousel owl-carousel dot-style1" data-loop="true" data-items="4" data-margin="30"
-                data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800"
-                data-dots="true" data-nav="false" data-center-mode="false" data-mobile-device="1" data-ipad-device="2"
-                data-ipad-device2="2" data-md-device="3" data-lg-device="4">
-                <div class="team-wrap">
-                    <div class="team-image"><img src="assets/images/team/1.jpg" alt="Team Image"></div>
-                    <div class="text-bottom">
-                        <h4 class="person-name"><a href="team-single.html">Dr. Ir. Ichwan Azwardi</a></h4>
-                        <span class="designation">Founder & Principal</span>
-                    </div>
-                </div>
-                <div class="team-wrap">
-                    <div class="team-image"><img src="assets/images/team/2.jpg" alt="Team Image"></div>
-                    <div class="text-bottom">
-                        <h4 class="person-name"><a href="team-single.html">Mining Trainer</a></h4>
-                        <span class="designation">Instructor</span>
-                    </div>
-                </div>
-                <div class="team-wrap">
-                    <div class="team-image"><img src="assets/images/team/3.jpg" alt="Team Image"></div>
-                    <div class="text-bottom">
-                        <h4 class="person-name"><a href="team-single.html">Ops Consultant</a></h4>
-                        <span class="designation">Advisor</span>
-                    </div>
-                </div>
-                <div class="team-wrap">
-                    <div class="team-image"><img src="assets/images/team/4.jpg" alt="Team Image"></div>
-                    <div class="text-bottom">
-                        <h4 class="person-name"><a href="team-single.html">Geo Specialist</a></h4>
-                        <span class="designation">Geologist</span>
+            
+            <!-- Solusi: Gunakan grid layout untuk single item -->
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8 col-sm-10">
+                    <div class="team-wrap single-expert">
+                        <div class="team-image">
+                            <img src="assets/images/bahan/pp.jpg" alt="Team Image" class="img-fluid">
+                        </div>
+                        <div class="text-bottom">
+                            <h4 class="person-name">
+                                <a href="team-single.html">Dr. Ir. Ichwan Azwardi</a>
+                            </h4>
+                            <span class="designation">Founder & CEO</span>
+                            <div class="expert-info mt-3">
+                                <p class="mb-2"><strong>Spesialisasi:</strong> Kebijakan Minerba & Eksekutif</p>
+                                <p class="mb-2"><strong>Kualifikasi:</strong> S.T., M.T., IPU — CPI (PERHAPI), IPU (PII)</p>
+                                <div class="social-links mt-3">
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <a href="mailto:jalinpertambangan@gmail.com" class="social-link"><i class="fa fa-envelope"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
